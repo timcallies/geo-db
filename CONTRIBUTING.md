@@ -1,215 +1,16 @@
-CS Club Git Tutorial
-====================
+To submit code to this repository all you have to do is send us a pull request.
+But make sure your code meets the following requirements.   
+*  Your commit messages clearly describe the change you requesting.   
+*  Your code is somewhat readable, with comments only when neccessary.   
+*  There is some kind of test that we can use to make sure that your code works.   
+  
+If your code meets all those requirements, it works, and we like the change, we will accept your pull request. 
+If you don't know how to use git refer to the following [tutorial](https://zachmsorenson.github.io/tutorials/github).   
+From that tutorial I've included one section that helps you get familar with creating forks and using pull requests. 
 
-Introduction
-------------
 
-Git is a version-control system for tracking changes in source code and
-making it easier for multiple people to collaborate on a shared project.
-Github is a web-service for hosting project repositories using Git. This
-tutorial will take you through the basics of using Git and Github to
-create and manage your projects, and hosting a basic webpage through
-Github Pages.
 
-A repository functions as the root directory that a project is located.
-Alongside all the source code or data you may need, the repository also
-holds some metadata. This is information necessary for the version
-control system - things like directory structure, project history, and
-the address of the repository. Git store this metadata in a folder
-called .git (the leading . indicates this is a hidden folder) and takes
-care of most of this on its own.
-
-GitHub stores this repository online. It can then be downloaded (cloned)
-to a local machine where you can work on it. All changes
-(adding/removing files and editing existing files) are made to the local
-copy of the project. The user must then explicitly push their changes to
-the online repository in order to update it. This allows multiple users
-to work on the same project simultaneously. When users push their
-updates, Git the version control system attempts to merge differences
-automatically - if conflicts occur, the updating user is required to
-resolve them.
-
-1) Sign-Up for Github
----------------------
-
-GitHub is free to use - sign-up can be found
-[here](https://github.com/join?source=header-home). I would recommend
-using your student email for extra goodies that we get, namely the
-ability to create private repositories. The GitHub Student Developer
-Pack can be found [here](https://education.github.com/pack) once you
-create your account.
-
-![GitHub Logo](images/github_icon.png)
-
-2) Download Git
----------------
-
-You must download Git to be able to clone repos from GitHub and use all
-the nice Git commands used for version control. Git can be downloaded
-[here](https://git-scm.com/downloads). You'll want to pick and choose
-the right version for your OS. Linux (and I believe Mac as well) and
-install and use Git straight in the terminal, while the Windows version
-installs a program called "Git Bash" - this is effectively just a Bash
-terminal you can use within Windows that gives you the exact same
-functionality. If you aren't use to using a command-line terminal yet
-(or just prefer a GUI) you can find a list of Git GUI clients on their
-site [here](https://git-scm.com/downloads/guis) - GitHub Desktop is
-probably the most common one of these.
-
-![Git Logo](images/git_icon.png)
-
-![](images/screenshot_git-bash.PNG)
-
-This is what the Git Bash terminal looks like...
-
-![](images/screenshot_git-desktop.PNG)
-
-...and this is GitHub Desktop
-
-Note about using Git Bash for Windows: Git Bash uses Vim as its default
-text editor, which is notorious for being very unintuitive and
-hard-to-learn if you are new to using the command-line. During
-installation, you will be asked if you would like to change this - if
-you are new to using a command-line interface, I would recommend using a
-different editor. Nano is one of the more user-friendly terminal-based
-text editors, otherwise feel free to use something with a GUI
-(Notepad++, Sublime, VS Code, etc).
-
-You can change Git's default text editor using the command
-`git config --global core.editor "<TEXT_EDITOR>"`
-
-3) Generate an SSH Key for Your Device
---------------------------------------
-
-Normally, every time you attempt to push changes to a repository, you
-will be prompted to type your GitHub credentials to verify your
-identity. Instead of this, you can create an SSH key on the device
-you're working on and register that device with GitHub using its key.
-This will automatically authorize you when pushing changes from the
-registered device.
-
-The first step of this process is generating your SSH key. GitHub's own
-instructions can be found
-[here](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)
-- they do a better job than I would of explaining the process. This
-process requires use of the Terminal (Linux/Mac) or the use of Git Bash
-(Windows).
-
-Once you have generated your key, you will have to add it to GitHub. If
-you followed the above help page, the default location for your key is
-in `<YOUR_USER_DIRECTORY>/.ssh/id_rsa`. Note that the .ssh directory is
-a hidden directory. Once you have the id\_rsa file, you can open it with
-a text editor to copy the key. The following instructions lay out adding
-the key to GitHub:
-
--   Click on the account icon in the upper-right
--   Click on 'Settings'
--   Click 'SSH and GPG keys' on the left-hand menu
--   Click 'New SSH key'
-    -   Enter a unique name into the 'Title' field (e.g. "My Laptop" or
-        "UST OSS 428")
-    -   Copy and paste your public SSH key (for your specific computer)
-        into the 'Key' field
--   Click 'Add SSH key'
-
-4) Creating Your Account Website on Github Pages
-------------------------------------------------
-
-GitHub Pages allows you to host a static website for your account under
-the domain \<USERNAME\>.github.io. This is a great way to learn some
-basics of web development! It's a very simple way to put up some HTML
-and play around. In fact, the webpage you are reading right now is
-hosted through GitHub Pages!
-
-To create your account website, you have to make a repository called
-\<USERNAME\>.github.io, where \<USERNAME\> is your GitHub account name.
-GitHub SHOULD then automatically serve any .html files you specify
-within that repository - for instance, this tutorial is the file
-\~/tutorials/github.html in my account page repository. Also note that
-if you don't specify a file (i.e. browse to username.github.io/) the web
-server will try to serve index.html. This is standard on the web.
-
-5) Making changes
------------------
-
-There are a couple of common commands that you will need to know if you
-want to do practically anything with git. Which is git add, git commit,
-git push, and git pull .
-
--   git add <filename>
-
-    - Use this to tell git you want to upload a particular file, after
-    you have made changes to that file.
-
--   git commit
-
-    - This will group up your changes together with a message describing
-    what you have changed. It's important to leave a describitve message
-    so that people will know what you have changed. Using the command as
-    is with no additional flags will open your default text editor, with
-    an overview of the files you've changed, so that you will write your
-    message describing your changes. Otherwise you can use the -m flag
-    to write your message on the command line like this
-
-         git commit -m "description of the changes you've made" 
-
--   git push -u <remote> 
-
-    This will upload all the changes you have commited to your
-    repository on github. Remote is the repository that you want to
-    upload to, usually "origin" where origin is your own repository on
-    Typically it will look like
-
-         git push -u origin 
-
-    To look at all the remotes you have for your project you can use
-
-        git remote
-
--   git pull <remote> 
-
-    Pull down changes from the specified remote, typically your own
-    repository "origin".
-
-6) Resolving a Merge Conflict.
-------------------------------
-
-Often times when working with multiple people on the same project, you
-will get the situation where two people will make two different changes
-to the same section of code. When this happens a merge conflict is
-creted. You will most likely see something like
-
-     CONFLICT (content): Merge conflict in <FILE> 
-
-where file is the file containing the merge conflict. The issue here is
-that there were two changes to be made to the same bit of code, so git
-doesn't know which change should be made, and is now asking your to
-choose which change should be made. Once you open a file, a merge
-confict will likely look something like this (Unless your IDE does
-something special) \
-
-    <<<<<<< HEAD
-    this is one version of the code
-    =======
-    this is another verison of the code.
-    >>>>>>> different_branch 
-    rest of your code. 
-
-\
- \
- To resolve this you will need to decide which version of that code
-snippet you want to keep. You have to be careful that you don't break
-any other additional features that are dependent on this snippet of
-code. You'll want to remove everything that isn't code ( \<, \>, =, and
-the names of the branches). Once you have done that you can
-
-     git add <FILE> 
-
-where FILE is the file where the merge conflict was, and then commit
-your changes. Once all that is done, the merge conflict has been
-resolved.
-
-7) Submitting code with pull requests.
+Submitting code with pull requests.
 --------------------------------------
 
 When you are all finished writting your code, the typical method for
@@ -219,197 +20,44 @@ repostiory where the project you are working on is stored. Here is the
 methodology to do so.
 
 1.  Create a fork of the repostiory that you want to work on. You can do
-    this by hitting the "Fork" button in the upper right hand of the
-    page of the repository that you want to do work on. This is
-    basically just cloning your own copy of the repository, and then
-    putting that into a new repositry that you own.
+	this by hitting the "Fork" button in the upper right hand of the
+	page of the repository that you want to do work on. This is
+	basically just cloning your own copy of the repository, and then
+	putting that into a new repositry that you own.
 2.  From there you will get your own version of that repo that is now
-    under your github name. Clone the version under your name onto your
-    machine.
-3.  Use git add, git commit, and git push to make chages to your forked
-    repository.
+	under your github name. Clone the version under your name onto your
+	machine.
+3.  Use ```git add, git commit, and git push``` to make chages to your forked
+	repository.
 4.  Sidenote: If you need to pull down upstream changes from the
-    original repository, then you might have to add the original
-    repository as a remote to your project. To do this do the following.
-    1.  Navigate into your repository on your machine.
-    2.  Commit all your changes.
-    3.  run the command:
+	original repository, then you might have to add the original
+	repository as a remote to your project. To do this do the following.
+	1.  Navigate into your repository on your machine.
+	2.  Commit all your changes.
+	3.  run the command: ```git remote add <name> <url> ```
 
-            git remote add <name> <url> 
+		with the name you want to use to refer to the repo, and the url
+		of the original repository that you want to pull down changes
+		from.
 
-        with the name you want to use to refer to the repo, and the url
-        of the original repository that you want to pull down changes
-        from.
+	4.  pull down the changes: ``git pull origin <name>``
 
-    4.  pull down the changes:
+		where name is the name of the remote repository that you want to
+		pull changes from. You can use ```git remote -v```
 
-             git pull origin <name> 
+		to view all of the remote repositories that you have added to
+		your project.
 
-        where name is the name of the remote repository that you want to
-        pull changes from. You can use
+	5.  If the upstream repo made changes to the same bit of code that
+		you have, you might have to solve for a merge conflict.
 
-             git remote -v 
+5.  Once you have made all your changes and you are ready to submit your code, you will go to the github page of the original repository.
 
-        to view all of the remote repositories that you have added to
-        your project.
+6.  Click on the "New Pull Request" button that is next to the button where you select the branch you are viewing.
 
-    5.  If the upstream repo made changes to the same bit of code that
-        you have, you might have to solve for a merge conflict. You can
-        find information on resolving merge conflicts in section
-        \#\#\#\#\#.
-
-5.  Once you have made all your changes and you are ready to submit your
-    code, you will go to the github page of the original repository.
-6.  Click on the "New Pull Request" button that is next to the button
-    where you select the branch you are viewing.
 7.  Click on "Compare accross forks"
-8.  You will want to merge your forked repository into this repository,
-    so make sure the base is the branch you want to merge into, and the
-    compare is your fork, and compare is the branch you want to merge
-    into the base branch.
-9.  From there you will hit "Create pull request", then the maintainers
-    of the repository will review your code, and if it is good enough
-    they will accept your merge request and add your code into their
-    repository. However, often times the maintainer may ask you to
-    change something, or fix a bug before he/she pulls your code into
-    their codebase, so make sure your code is well tested, and looks
-    good!
 
-8) Commands
------------
+8.  You will want to merge your forked repository into this repository, so make sure the base is the branch you want to merge into, and the compare is your fork, and compare is the branch you want to merge into the base branch.
 
-This section is taken from Dr. Marrinan's Git Tutorial
-
-#### Clone a Repository
-
--   SSH: 
-
-        git clone git@<host>:<owner>/<repository>.git
-
-    -   Example: 
-
-            git clone git@github.com:tmarrinan/jsobject.git
-
-    -   For repositories you own (and have uploaded your SSH key to)
-
--   HTTPS: 
-
-        git clone https://<host>/<owner>/<repository>.git
-
-    -   Example: 
-
-            git clone https://github.com/tmarrinan/jsobject.git
-
-    -   For repositories someone else owns
-
-#### Add a New File to the Repository
-
--   git add <filename>
-
-    -   Only marks file as 'to be uploaded', does not actually upload to
-        the repository
-
-#### Remove an Existing File from the Repository
-
--   git rm <filename>
-
-    -   Only marks file as 'to be removed', does not actually delete
-        from the repository
-
-#### Commit Changes
-
--   git commit -a -m "<commit_message>"
-
-    -   -a: stage all files in the repository that have been modified
-        locally (added, removed, edited)
-    -   -m: provide a short message that describes the changes being
-        made
-
-#### Push Changes to Online Repository
-
--   git push origin <branch>
-
-    -   \<branch\>: the current branch you are working on (default is
-        'master')
-
-#### Pull Changes from Online Repository
-
--   git pull origin <branch>
-
-    -   \<branch\>: the current branch you are working on (default is
-        'master')
-    -   Used when changes have been made and pushed to the repository
-        from another computer
-
-#### Create a New Branch
-
--   git checkout -b <new_branch_name>
-
-    -   Creates a new branch with id \<new\_branch\_name\> and makes it
-        the current branch you are working on locally
--   git push origin <new_branch_name>
-
-    -   Upload new branch to the online repository
-
-#### Switching Branches
-
--   git checkout <branch_name>
-
-    -   Changes the local branch that you are currently working on
-
-#### Listing Available Branches 
-
--   git branch
-
-    -   Shows local branches (current branch marked with \*)
--   git remote show origin
-
-    -   Shows all branches in the online repository
-
-#### Checkout a Remote Branch on Local Machine
-
--   git fetch origin <branch_name>
-
-    -   Download remote branch \<branch\_name\> from repository
--   git checkout -b <branch_name> origin/<branch_name>
-
-    -   Create a local branch called \<branch\_name\> and point it to
-        sync with the remote branch \<branch\_name\>
-
-#### Merge Branches
-
--   Used in order to merge changes made from branch \<branch\_a\> into
-    \<branch\_b\>:
-    -   git checkout <branch_a>
-
-        -   Switch local branch to \<branch\_a\>
-    -   git pull origin <branch_a>
-
-        -   Ensure that local branch \<branch\_a\> is up to date with
-            the online repository
-    -   git checkout <branch_b>
-
-        -   Switch local branch to \<branch\_b\>
-    -   git pull origin <branch_b>
-
-        -   Ensure that local branch \<branch\_b\> is up to date with
-            the online repository
-    -   git merge <branch_a>
-
-        -   Merge code changes made in branch \<branch\_a\> into branch
-            \<branch\_b\>
-        -   Warning: conflicts may exist if \<branch\_a\> and
-            \<branch\_b\> separately modified the same file (must be
-            resolved manually)
-
-References
-----------
-
-Information and material for this tutorial was pulled from the following
-sources:
-
--   Dr. Marrinan's Git Overview (adapted to this tutorial)
--   [GitHub
-    Hello-World](https://guides.github.com/activities/hello-world/)
--   [GitHub Pages](https://pages.github.com/)
+9.  From there you will hit "Create pull request", then the maintainers of the repository will review your code, and if it is good enough they will accept your merge request and add your code into their repository. However, often times the maintainer may ask you to change something, or fix a bug before he/she pulls your code into their codebase, so make sure your code is well tested, and looks good!
 
