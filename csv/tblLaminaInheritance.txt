@@ -1,0 +1,4 @@
+2,"Low",1
+3,"Medium",2
+4,"High",3
+5,"Variable",4

@@ -1,0 +1,6 @@
+1,"Grumeau"
+2,"Peloidal"
+3,"Oolitic"
+4,"Granular"
+5,"Microlaminated"
+6,"Massive micritic"

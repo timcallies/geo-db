@@ -1,0 +1,8 @@
+1,"Equant-Smooth",1
+2,"Equant-rough",2
+3,"Equant-irregular",3
+4,"Equant-strongly irregular",4
+5,"Elongate-Smooth",5
+6,"Elongate-Rough",6
+7,"Elongate-irregular",7
+8,"Elongate-strongly irregular",8
