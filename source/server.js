@@ -1,5 +1,6 @@
-var stdin = process.stdin; 
-stdin.setEncoding('utf-8'); 
+const readline = require('readline'); 
+const rl = readline.createInterface( process.stdin, process.stdout ); 
+
 
 
 var express = require('express');
@@ -12,18 +13,6 @@ var connection = mysql.createConnection({
     password    : '',
     database    : 'geodb'
 });
-
-connection.connect();
-
-
-
-
-
-
-
-
-
-
 
 
 /* ===============WARNING=================
@@ -38,17 +27,48 @@ connection.connect();
 function restoreFromCSV( )
 {
 
-	console.log("Are you sure you want to restore geodb? (yes / no"); 
-	stdin.on('data', function(data)  {
+	function deleteData()
+	{
 
-		if(data === 'yes'){
-			//remove and re-add geodb.
-			
-			//load the csv files into geodb. 
+		//get the name of the tables. 
+		let queryString = "SELECT TABLE_NAME FROM information_schema.tables WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_SCHEMA = 'geodb';"
+		let queryPromise = sendQuery( queryString ); 
+		queryPromise.then( function( tableNames ) {
 
-		}
+			//for each table delete the contents of that table. 
+			for( let i = 0; i < tableNames.length; i++) 
+			{
+				let tableName = tableNames[i].TABLE_NAME;
+				let queryString = "TRUNCATE TABLE " + tableName + ";";
+
+				let deleteQueryPromise = sendQuery(queryString); 
+				deleteQueryPromise.then( restoreData( tableName ) ); 
+			}
+		});
+
+
+	}
+
+	function restoreData(tableName)
+	{
+
+		let queryString = "LOAD DATA LOCAL INFILE './../csv/" + tableName + ".txt' INTO TABLE " + tableName + " FIELDS TERMINATED BY ','; " ;
+		sendQuery(queryString); 
+	}
+
+	rl.question("Are you sure you want to restore geodb? (yes / no)\n", function (answer) 
+		{
+			if(answer === 'yes')
+			{
+				console.log("\n\n=====RESTORING DATABASE====="); 
+				deleteData(); 
+				//console.log("\n ======DATABASE RESTORED======\n") );  
+
+			}
+			else { console.log("Not restoring geodb"); }
+			rl.close(); 
 	}); 
-};
+}
 
 
 
@@ -63,7 +83,8 @@ function sendQuery( queryString, callback ){
 		connection.query( queryString, 	function( error, results) {
 				if(error) return reject(error); 
 				else { 
-					console.log('fulfilled query promise'); 
+					console.log("Quering geodb: " + queryString ); 
+					//console.log(results);
 					resolve(results); 
 				}
 			});
@@ -74,28 +95,10 @@ function sendQuery( queryString, callback ){
 
 
 
-
-
-
-app.get('/', function(req, res){
-    queryByName('Zach').then( results => {
-        console.log('Got results!');
-        console.log(results);
-        res.send(results);
-    });
-    //res.send("Hello world"); 
-});
-
-function queryByName(name, callback){
-    return new Promise(function (resolve, reject){
-        connection.query('SELECT * FROM test_table WHERE name = "' + name + '"', function (error, results) {
-            if (error) return reject(error);
-            else {
-                console.log('fulfilled query promise');
-                resolve(results);
-            }
-        });
-    });
-};
-
-app.listen(3000);
+function main()
+{
+	connection.connect();
+	restoreFromCSV(); 
+	app.listen(3000);
+}
+main(); 
