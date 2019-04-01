@@ -1,18 +1,30 @@
-const readline = require('readline'); 
-const rl = readline.createInterface( process.stdin, process.stdout ); 
+function main()
+{
+	const readline = require('readline'); 
+	const rl = readline.createInterface( process.stdin, process.stdout ); 
+
+	const express = require('express');
+	const app = express();
+
+	const mysql = require('mysql');
+	const connection = mysql.createConnection({
+		host        : 'localhost',
+		user        : 'me',
+		password    : '',
+		database    : 'geodb'
+	});
+
+	connection.connect();
+
+	restoreFromCSV(); 
+	
+	app.listen(3000);
+	rl.close(); 
+}
 
 
 
-var express = require('express');
-var app = express();
 
-var mysql = require('mysql');
-var connection = mysql.createConnection({
-    host        : 'localhost',
-    user        : 'me',
-    password    : '',
-    database    : 'geodb'
-});
 
 
 /* ===============WARNING=================
@@ -66,7 +78,7 @@ function restoreFromCSV( )
 
 			}
 			else { console.log("Not restoring geodb"); }
-			rl.close(); 
+
 	}); 
 }
 
@@ -95,10 +107,5 @@ function sendQuery( queryString, callback ){
 
 
 
-function main()
-{
-	connection.connect();
-	restoreFromCSV(); 
-	app.listen(3000);
-}
+
 main(); 
