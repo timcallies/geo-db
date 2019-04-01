@@ -1,28 +1,98 @@
-function main()
+const readline = require('readline'); 
+const rl = readline.createInterface( process.stdin, process.stdout ); 
+
+const SQL = require('sql-template-strings'); 
+
+
+const express = require('express');
+const app = express();
+
+const mysql = require('mysql');
+const connection = mysql.createConnection({
+	host        : 'localhost',
+	user        : 'me',
+	password    : '',
+	database    : 'geodb'
+});
+
+connection.connect();
+
+//restoreFromCSV(); 
+
+app.listen(3000);
+
+
+
+
+
+
+
+// TODO: Replace A, B, C... with correct column names.
+// TODO: Add Relations. 
+// TODO: Enum data types? 
+function createTables()
 {
-	const readline = require('readline'); 
-	const rl = readline.createInterface( process.stdin, process.stdout ); 
 
-	const express = require('express');
-	const app = express();
+	//The following variables are SQL statements for creating the tables
+	//for our database. 
+	let microbilitesTbl = SQL`CREATE TABLE microbilites( 
+		A FLOAT, 
+		B FLOAT, 
+		C varchar(20), 
+		D INT, E INT, F INT, G INT);`; 	
+						
 
-	const mysql = require('mysql');
-	const connection = mysql.createConnection({
-		host        : 'localhost',
-		user        : 'me',
-		password    : '',
-		database    : 'geodb'
-	});
+	let macrostructureDataTbl = SQL`CREATE TABLE macrostructureData(
+		A INT, 
+		B INT, 
+		C varchar(100), 
+		D INT, E INT, 
+		F varchar(10) );` ; 
 
-	connection.connect();
 
-	restoreFromCSV(); 
+	let macroStructureLocationTbl = SQL`CREATE TABLE macrostructureLocations(
+		A varchar(1), 
+		B FLOAT, 
+		C FLOAT, 
+		D varchar(10), 
+		E INT, F INT ); `; 
+
+
+	//TODO: Check datatypes of D,M,N,O,P,Q,R 
+	let mesostructureDataTbl = SQL`CREATE TABLE mesostructureData(
+		A INT, 
+		B varchar(20), 
+		C varchar(20),
+		D INT, 
+		E varchar(100),
+		F INT, G INT, 
+		H FLOAT, I FLOAT, 
+		J FLOAT, K FLOAT, 
+		L INT, 
+		M INT, N INT, O INT, P INT, Q INT, R INT );`; 
+
+
+	let photoLinksDataTbl = SQL`CREATE TABLE photoLinksData(
+		A INT, B INT, C INT, D INT, E INT, F INT, 
+		G INT, H INT, I INT, J INT, K INT, 
+		L varchar(100), M INT);` ; 
+
+
+	//TODO: The date format in the CSV is backwards.  
+	//		Datetime needs to be in the format of YYYYMMDD HH:MM:SS
+	let samplesForARCTbl= SQL`CREATE TABLE samplesForARC(
+		A VARCHAR(20), B VARCHAR(20), 
+		C INT, D CHAR, 
+		E FLOAT, F FLOAT, 
+		G DATETIME
+		H INT, I INT ); `; 
+
 	
-	app.listen(3000);
-	rl.close(); 
+	let thinSectionDataTbl = SQL`CREATE TABLE thinSectionData(
+
+
+
 }
-
-
 
 
 
@@ -57,13 +127,10 @@ function restoreFromCSV( )
 				deleteQueryPromise.then( restoreData( tableName ) ); 
 			}
 		});
-
-
 	}
 
 	function restoreData(tableName)
 	{
-
 		let queryString = "LOAD DATA LOCAL INFILE './../csv/" + tableName + ".txt' INTO TABLE " + tableName + " FIELDS TERMINATED BY ','; " ;
 		sendQuery(queryString); 
 	}
@@ -78,7 +145,7 @@ function restoreFromCSV( )
 
 			}
 			else { console.log("Not restoring geodb"); }
-
+			rl.close(); 
 	}); 
 }
 
@@ -108,4 +175,9 @@ function sendQuery( queryString, callback ){
 
 
 
-main(); 
+
+
+
+
+
+
