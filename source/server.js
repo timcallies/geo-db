@@ -1,26 +1,21 @@
-function main()
-{
-	const readline = require('readline'); 
-	const rl = readline.createInterface( process.stdin, process.stdout ); 
+const readline = require('readline'); 
+const rl = readline.createInterface( process.stdin, process.stdout ); 
 
-	const express = require('express');
-	const app = express();
+const express = require('express');
+const app = express();
 
-	const mysql = require('mysql');
-	const connection = mysql.createConnection({
-		host        : 'localhost',
-		user        : 'me',
-		password    : '',
-		database    : 'geodb'
-	});
+const mysql = require('mysql');
+const connection = mysql.createConnection({
+	host        : 'localhost',
+	user        : 'me',
+	password    : '',
+	database    : 'geodb'
+});
 
-	connection.connect();
+connection.connect();
 
-	restoreFromCSV(); 
-	
-	app.listen(3000);
-	rl.close(); 
-}
+restoreFromCSV(); 
+
 
 
 
@@ -34,6 +29,9 @@ function main()
  * Use this function if you mess up the database
  * and want to restore it back to it's original state. 
  * This function will ask for confirmation on the command line. 
+ *
+ * Note that this function will only work if there are actually 
+ * tables in the database. 
  * 
  */
 function restoreFromCSV( )
@@ -107,5 +105,6 @@ function sendQuery( queryString, callback ){
 
 
 
+app.listen(3000);
+rl.close(); 
 
-main(); 
