@@ -17,80 +17,121 @@ const connection = mysql.createConnection({
 
 connection.connect();
 
-//restoreFromCSV(); 
+
+createTables(); 
+restoreFromCSV(); 
 
 app.listen(3000);
 
 
 
 
-
-
-
 // TODO: Replace A, B, C... with correct column names.
 // TODO: Add Relations. 
-// TODO: Enum data types? 
+// TODO: Enum data types
+// TODO: Add notnull characteristic to appropriate collumns. 
 function createTables()
 {
 
 	//The following variables are SQL statements for creating the tables
 	//for our database. 
-	let microbilitesTbl = SQL`CREATE TABLE microbilites( 
-		A FLOAT, 
-		B FLOAT, 
-		C varchar(20), 
-		D INT, E INT, F INT, G INT);`; 	
-						
+	let microbilitesTbl = {
+		name: 'microbialites', 
+		query: SQL`CREATE TABLE microbialites( 
+			A FLOAT, 
+			B FLOAT, 
+			C varchar(20), 
+			D INT, E INT, F INT, G INT);` 
+	}
 
-	let macrostructureDataTbl = SQL`CREATE TABLE macrostructureData(
-		A INT, 
-		B INT, 
-		C varchar(100), 
-		D INT, E INT, 
-		F varchar(10) );` ; 
+	let macrostructureDataTbl = {
+		name: 'macrostructureData', 
+		query: SQL`CREATE TABLE macrostructureData(
+			A INT, 
+			B INT, 
+			C varchar(100), 
+			D INT, E INT, 
+			F varchar(10) );`  
+	}
 
-
-	let macroStructureLocationTbl = SQL`CREATE TABLE macrostructureLocations(
-		A varchar(1), 
-		B FLOAT, 
-		C FLOAT, 
-		D varchar(10), 
-		E INT, F INT ); `; 
-
+	let macrostructureLocationsTbl = {
+		name: 'macrostructureLocations', 
+		query: SQL`CREATE TABLE macrostructureLocations(
+			A varchar(1), 
+			B FLOAT, 
+			C FLOAT, 
+			D varchar(10), 
+			E INT, F INT ); ` 
+	}
 
 	//TODO: Check datatypes of D,M,N,O,P,Q,R 
-	let mesostructureDataTbl = SQL`CREATE TABLE mesostructureData(
-		A INT, 
-		B varchar(20), 
-		C varchar(20),
-		D INT, 
-		E varchar(100),
-		F INT, G INT, 
-		H FLOAT, I FLOAT, 
-		J FLOAT, K FLOAT, 
-		L INT, 
-		M INT, N INT, O INT, P INT, Q INT, R INT );`; 
+	let mesostructureDataTbl = {
+		name: 'mesostructureData', 
+		query: SQL`CREATE TABLE mesostructureData(
+			A INT, 
+			B varchar(20), 
+			C varchar(20),
+			D INT, 
+			E TEXT,
+			F INT, G INT, 
+			H FLOAT, I FLOAT, 
+			J FLOAT, K FLOAT, 
+			L INT, 
+			M INT, N INT, O INT, P INT, Q INT, R INT );`
+	}
 
-
-	let photoLinksDataTbl = SQL`CREATE TABLE photoLinksData(
-		A INT, B INT, C INT, D INT, E INT, F INT, 
-		G INT, H INT, I INT, J INT, K INT, 
-		L varchar(100), M INT);` ; 
-
+	let photoLinksDataTbl = {
+		name: 'photoLinksData', 
+		query: SQL`CREATE TABLE photoLinksData(
+			A INT, B INT, C INT, D INT, E INT, F INT, 
+			G INT, H INT, I INT, J INT, K INT, 
+			L TEXT, M INT);` 
+	}
 
 	//TODO: The date format in the CSV is backwards.  
 	//		Datetime needs to be in the format of YYYYMMDD HH:MM:SS
-	let samplesForARCTbl= SQL`CREATE TABLE samplesForARC(
-		A VARCHAR(20), B VARCHAR(20), 
-		C INT, D CHAR, 
-		E FLOAT, F FLOAT, 
-		G DATETIME
-		H INT, I INT ); `; 
+	let samplesForARCTbl = { 
+		name: 'samplesForARC',
+		query: SQL`CREATE TABLE samplesForARC(
+			A VARCHAR(20), B VARCHAR(20), 
+			C INT, D CHAR, 
+			E FLOAT, F FLOAT, 
+			G DATETIME,
+			H INT, I INT ); ` 
+	}
 
+	//check datatype of C, .
+	let thinSectionDataTbl = { 
+		name: 'thinSectionData', 
+		query: SQL`CREATE TABLE thinSectionData(
+			A INT, 
+			B VARCHAR(20),
+			C INT, D INT, 
+			E TEXT, 
+			F INT, G INT, H INT, I INT, 
+			J INT, K INT, L INT, M INT, N INT ); `
+	}
+
+	let thrombolitesOnlyTbl = {
+		name: 'thrombolitesOnly', 
+		query: SQL`CREATE TABLE thrombolitesOnly(
+			A FLOAT, B FLOAT, 
+			C VARCHAR(20), 
+			D INT ); `
+	}
+
+
+
+	var tables = [microbilitesTbl, macrostructureDataTbl, macrostructureLocationsTbl, 
+		mesostructureDataTbl, photoLinksDataTbl, 
+		samplesForARCTbl, thinSectionDataTbl, thrombolitesOnlyTbl];
 	
-	let thinSectionDataTbl = SQL`CREATE TABLE thinSectionData(
-
-
+	for( let table of tables )
+	{
+		//console.log(table.query.sql); 
+		let queryPromise = sendQuery( table.query.sql ); 
+		queryPromise.then( () => { console.log("Added table " + table.name);  } ); 
+	}
 
 }
 
@@ -146,7 +187,7 @@ function restoreFromCSV( )
 			}
 			else { console.log("Not restoring geodb"); }
 			rl.close(); 
-	}); 
+		}); 
 }
 
 
@@ -160,15 +201,15 @@ function sendQuery( queryString, callback ){
 	function queryExec(resolve, reject) {
 
 		connection.query( queryString, 	function( error, results) {
-				if(error) return reject(error); 
-				else { 
-					console.log("Quering geodb: " + queryString ); 
-					//console.log(results);
-					resolve(results); 
-				}
-			});
+			if(error) return reject(error); 
+			else { 
+				console.log("Quering geodb: " + queryString ); 
+				//console.log(results);
+				resolve(results); 
+			}
+		});
 	};
-	
+
 	return new Promise( queryExec ); 
 };
 
