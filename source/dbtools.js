@@ -14,23 +14,15 @@
 
 
 
-const mysql = require('mysql');
-const connection = mysql.createConnection({
-	host        : 'localhost',
-	user        : 'me',
-	password    : '',
-	database    : 'geodb'
-});
-
-var mysql_conn1 = connection.connect();
-sendQuery( mysql_conn1, ""); 
-
-
 const readline = require('readline'); 
 const rl = readline.createInterface( process.stdin, process.stdout ); 
 const SQL = require('sql-template-strings'); 
 
 module.exports = { sendQuery, restoreFromCSV, createTables }
+
+
+
+
 
 /* 
  * This is a general purpose helper function 
@@ -38,10 +30,15 @@ module.exports = { sendQuery, restoreFromCSV, createTables }
  * user.  This function does not sanatize sql input. 
  */
 function sendQuery( mysql_conn, queryString ) {
+	
+	if( mysql_conn == null)
+	{
+		throw "The mysql connection argument cannot be null"; 
+	}
 
 	function queryExec(resolve, reject) {
 
-		mysql_conn1.query( queryString, 	function( error, results) {
+		mysql_conn.query( queryString, 	function( error, results) {
 			if(error) return reject(error); 
 			else { 
 				console.log("Quering geodb: " + queryString ); 
@@ -197,7 +194,7 @@ function restoreFromCSV( mysql_conn )
 
 		//get the name of the tables. 
 		let queryString = "SELECT TABLE_NAME FROM information_schema.tables WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_SCHEMA = 'geodb';"
-		let queryPromise = sendQuery( queryString ); 
+		let queryPromise = sendQuery( mysql_conn, queryString ); 
 		queryPromise.then( function( tableNames ) {
 
 			//for each table delete the contents of that table. 
@@ -206,7 +203,7 @@ function restoreFromCSV( mysql_conn )
 				let tableName = tableNames[i].TABLE_NAME;
 				let queryString = "TRUNCATE TABLE " + tableName + ";";
 
-				let deleteQueryPromise = sendQuery(queryString); 
+				let deleteQueryPromise = sendQuery(mysql_conn, queryString); 
 				deleteQueryPromise.then( restoreData( tableName ) ); 
 			}
 		});
@@ -223,9 +220,10 @@ function restoreFromCSV( mysql_conn )
 			if(answer === 'yes')
 			{
 				console.log("\n\n=====RESTORING DATABASE====="); 
-				deleteData(); 
-				//console.log("\n ======DATABASE RESTORED======\n") );  
-
+				deleteData();
+					
+				//console.log("\n ======DATABASE RESTORED======\n") ;  
+				
 			}
 			else { console.log("Not restoring geodb"); }
 			rl.close(); 
