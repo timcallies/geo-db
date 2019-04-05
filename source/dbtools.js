@@ -13,11 +13,11 @@
  */
 
 
-
 const readline = require('readline'); 
 const rl = readline.createInterface( process.stdin, process.stdout ); 
 const SQL = require('sql-template-strings'); 
 
+//pack the functions into the module. 
 module.exports = { sendQuery, restoreFromCSV, createTables }
 
 
@@ -39,19 +39,29 @@ function sendQuery( mysql_conn, queryString ) {
 	function queryExec(resolve, reject) {
 
 		mysql_conn.query( queryString, 	function( error, results) {
-			if(error) return reject(error); 
-			else { 
+			if(error ){
+				return reject(error); 
+			}
+			else 
+			{ 
 				console.log("Quering geodb: " + queryString ); 
 				//console.log(results);
 				resolve(results); 
 			}
-		});
+		} );
 	};
 
 	return new Promise( queryExec ); 
 };
 
 
+function queryPromiseReject( err )
+{
+	if(err) { 
+		console.log("Your query was rejected. ERROR: " + err.code
+			+ "\n QUERY STRING: " + err.sql ); 
+	}
+}
 
 
 
@@ -166,7 +176,7 @@ function createTables( mysql_conn )
 	{
 		//console.log(table.query.sql); 
 		let queryPromise = sendQuery(mysql_conn, table.query.sql ); 
-		queryPromise.then( () => { console.log("Added table " + table.name);  } ); 
+		queryPromise.then( () => { console.log("Added table " + table.name);  }, queryPromiseReject ); 
 	}
 
 }
@@ -204,9 +214,9 @@ function restoreFromCSV( mysql_conn )
 				let queryString = "TRUNCATE TABLE " + tableName + ";";
 
 				let deleteQueryPromise = sendQuery(mysql_conn, queryString); 
-				deleteQueryPromise.then( restoreData( tableName ) ); 
+				deleteQueryPromise.then( restoreData(tableName), queryPromiseReject ); 
 			}
-		});
+		}, queryPromiseReject );
 	}
 
 	function restoreData(tableName)
