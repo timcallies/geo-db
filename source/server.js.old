@@ -10,8 +10,6 @@ var connection = mysql.createConnection({
 });
 
 connection.connect();
-
-
 app.get('/', function(req, res){
     queryByName('Zach').then( results => {
         console.log('Got results!');
@@ -32,5 +30,7 @@ function queryByName(name, callback){
         });
     });
 };
+
+
 
 app.listen(3000);
