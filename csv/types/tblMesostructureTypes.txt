@@ -1,0 +1,13 @@
+8,"Dendrolitic",5,
+9,"Digitate",4,
+15,"Columnar",3,
+17,"Other microbial (describe below)",22,
+18,"Other detrital",21,
+21,"Thrombolitic",2,
+22,"Massive",8,
+23,"Pisolitic",7,
+24,"Oncolitic",6,
+26,"Brecciated",20,
+28,"Radial",9,
+30,"Concentric",15,
+31,"Stromatolitic (laminated)",1,0
