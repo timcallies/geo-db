@@ -84,54 +84,79 @@ function createTables( mysql_conn )
 	let microbilitesTbl = {
 		name: 'microbialites', 
 		query: SQL`CREATE TABLE microbialites( 
-			A FLOAT, 
-			B FLOAT, 
-			C varchar(20), 
-			D INT, E INT, F INT, G INT);` 
+			Northing FLOAT, 
+			Easting FLOAT, 
+			SampleID varchar(20), 
+			MacrostructureType INT, 
+            MesostructureDesc INT, 
+            LaminaShape INT, 
+            LaminaInheritance INT);` 
 	}
 
 	let macrostructureDataTbl = {
 		name: 'macrostructureData', 
 		query: SQL`CREATE TABLE macrostructureData(
-			A INT, 
-			B INT, 
-			C varchar(100), 
-			D INT, E INT, 
-			F varchar(10) );`  
+			MacrostructureID INT, 
+			MacrostructureType INT, 
+			Comments varchar(100), 
+			WaypointID INT, 
+            SectionHeight INT, 
+			MegastructureType INT );`  
 	}
 
 	let macrostructureLocationsTbl = {
 		name: 'macrostructureLocations', 
 		query: SQL`CREATE TABLE macrostructureLocations(
-			A varchar(1), 
-			B FLOAT, 
-			C FLOAT, 
-			D varchar(10), 
-			E INT, F INT ); ` 
+			WaypointName INT, 
+			Northing FLOAT, 
+			Easting FLOAT, 
+			Datum varchar(10), 
+			MacrostructureType INT, 
+            MacrostructureID INT,
+            MegastructureType INT); ` 
 	}
 
 	//TODO: Check datatypes of D,M,N,O,P,Q,R 
 	let mesostructureDataTbl = {
 		name: 'mesostructureData', 
 		query: SQL`CREATE TABLE mesostructureData(
-			A INT, 
-			B varchar(20), 
-			C varchar(20),
-			D INT, 
-			E TEXT,
-			F INT, G INT, 
-			H FLOAT, I FLOAT, 
-			J FLOAT, K FLOAT, 
-			L INT, 
-			M INT, N INT, O INT, P INT, Q INT, R INT );`
+			SampleIDKey INT, 
+			SampleID varchar(20), 
+			SampleSize varchar(20),
+			FieldDescription varchar(50), 
+			RockDescription varchar(2000),
+			MesostructureDesc INT, 
+            LaminaShape INT, 
+			LaminaThickness FLOAT, 
+            MacrostructureID FLOAT, 
+			SynopticRelief FLOAT, 
+            Wavelength FLOAT, 
+			AmplitudeOrHeight INT, 
+			MesostructureTexture INT, 
+            MesostructureGrains INT, 
+            MesostructureTexture2 INT, 
+            Analyst1 INT, 
+            LaminaInheritance INT, 
+            MesoClotShape INT,
+            MesoClotSize INT);`
 	}
 
 	let photoLinksDataTbl = {
 		name: 'photoLinksData', 
 		query: SQL`CREATE TABLE photoLinksData(
-			A INT, B INT, C INT, D INT, E INT, F INT, 
-			G INT, H INT, I INT, J INT, K INT, 
-			L TEXT, M INT);` 
+			PhotoIDKey INT, 
+            SampleIDKey INT, 
+            PhotoLinkRelative2 varchar(300), 
+            OutcropPhoto BOOLEAN, 
+            Photomicrograph BOOLEAN, 
+            TSOverview BOOLEAN, 
+			CLImage BOOLEAN, 
+            OtherImage BOOLEAN, 
+            OtherDocument BOOLEAN, 
+            MacrostructureID INT, 
+            TSDescID INT, 
+			WaypointIDKey INT, 
+            SampleID varchar(20));` 
 	}
 
 	//TODO: The date format in the CSV is backwards.  
@@ -139,31 +164,48 @@ function createTables( mysql_conn )
 	let samplesForARCTbl = { 
 		name: 'samplesForARC',
 		query: SQL`CREATE TABLE samplesForARC(
-			A VARCHAR(20), B VARCHAR(20), 
-			C INT, D CHAR, 
-			E FLOAT, F FLOAT, 
-			G DATETIME,
-			H INT, I INT ); ` 
+			SampleID VARCHAR(20), 
+            Datum VARCHAR(20), 
+			UTMZone1 INT, 
+            UTMZone2 varchar(10), 
+			Easting FLOAT, 
+            Northing FLOAT, 
+			DateCollected DATETIME,
+			MacrostructureType INT, 
+            MacrostructureDesc INT ); ` 
 	}
 
 	//check datatype of C, .
 	let thinSectionDataTbl = { 
 		name: 'thinSectionData', 
 		query: SQL`CREATE TABLE thinSectionData(
-			A INT, 
-			B VARCHAR(20),
-			C INT, D INT, 
-			E TEXT, 
-			F INT, G INT, H INT, I INT, 
-			J INT, K INT, L INT, M INT, N INT ); `
+			TSDescID INT, 
+			SampleID VARCHAR(20),
+			Subsample VARCHAR(10), 
+            SampleIDKey INT, 
+			TSDescription TEXT, 
+			PrimaryTexture INT, 
+            SecondaryTexture INT, 
+            Cement1 INT, 
+            Porosity1 INT, 
+			Cement2 INT, 
+            Porosity2 INT, 
+            PorosityPercentEst INT, 
+            CementFill BOOLEAN, 
+            Mineralogy1 INT,
+            Mineralogy2 INT,
+            ClasticGrains1 INT,
+            ClasticGrains2 INT
+        ); `
 	}
 
 	let thrombolitesOnlyTbl = {
 		name: 'thrombolitesOnly', 
 		query: SQL`CREATE TABLE thrombolitesOnly(
-			A FLOAT, B FLOAT, 
-			C VARCHAR(20), 
-			D INT ); `
+			Northing FLOAT, 
+            Easting FLOAT, 
+			SampleID VARCHAR(20), 
+			MesostructureDesc INT ); `
 	}
 
 	var tables = [microbilitesTbl, macrostructureDataTbl, macrostructureLocationsTbl, 
