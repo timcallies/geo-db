@@ -75,6 +75,7 @@ function queryPromiseReject( err )
 // TODO: Add Relations. 
 // TODO: Enum data types
 // TODO: Add notnull characteristic to appropriate collumns. 
+// NOTE: Not sure if loading into autoincrement column will work.
 function createTables( mysql_conn )
 {
 
@@ -85,22 +86,26 @@ function createTables( mysql_conn )
 		query: SQL`CREATE TABLE microbialites( 
 			Northing FLOAT, 
 			Easting FLOAT, 
-			SampleID varchar(20), 
+			SampleID varchar(20) NOT NULL, 
 			MacrostructureType INT, 
             MesostructureDesc INT, 
             LaminaShape INT, 
-            LaminaInheritance INT);` 
+            LaminaInheritance INT,
+			PRIMARY KEY( SampleID )
+		);` 
 	}
 
 	let macrostructureDataTbl = {
 		name: 'macrostructureData', 
 		query: SQL`CREATE TABLE macrostructureData(
-			MacrostructureID INT, 
-			MacrostructureType INT, 
-			Comments varchar(100), 
+			MacrostructureID INT NOT NULL AUTO_INCREMENT, 
+			MacrostructureType INT NOT NULL, 
+			Comments TEXT, 
 			WaypointID INT, 
             SectionHeight INT, 
-			MegastructureType INT );`  
+			MegastructureType INT,
+			PRIMARY KEY( MacrostructureID ), 
+		);`  
 	}
 
 	let macrostructureLocationsTbl = {
@@ -118,7 +123,7 @@ function createTables( mysql_conn )
 	let mesostructureDataTbl = {
 		name: 'mesostructureData', 
 		query: SQL`CREATE TABLE mesostructureData(
-			SampleIDKey INT, 
+			SampleIDKey INT NOT NULL AUTO_INCREMENT, 
 			SampleID varchar(20), 
 			SampleSize varchar(20),
 			FieldDescription varchar(50), 
@@ -136,15 +141,21 @@ function createTables( mysql_conn )
             Analyst1 INT, 
             LaminaInheritance INT, 
             MesoClotShape INT,
-            MesoClotSize INT);`
+            MesoClotSize INT, 
+			PRIMARY KEY (SampleIDKey)
+		);`
 	}
 
+
+	// TODO: Correct ordering of collumns.
+	// 			Check Data types. 
+	// 			Last column ?? 
 	let photoLinksDataTbl = {
 		name: 'photoLinksData', 
 		query: SQL`CREATE TABLE photoLinksData(
-			PhotoIDKey INT, 
+			PhotoIDKey INT NOT NULL AUTO_INCREMENT, 
             SampleIDKey INT, 
-            PhotoLinkRelative2 varchar(300), 
+			C INT, 
             OutcropPhoto BOOLEAN, 
             Photomicrograph BOOLEAN, 
             TSOverview BOOLEAN, 
@@ -154,7 +165,10 @@ function createTables( mysql_conn )
             MacrostructureID INT, 
             TSDescID INT, 
 			WaypointIDKey INT, 
-            SampleID varchar(20));` 
+            PhotoLinkRelative TEXT, 
+            SampleID INT
+			PRIMARY KEY (PhotoIDKey )
+		);` 
 	}
 
 	let samplesForARCTbl = { 
@@ -163,7 +177,7 @@ function createTables( mysql_conn )
 			SampleID VARCHAR(20), 
             Datum VARCHAR(20), 
 			UTMZone1 INT, 
-            UTMZone2 varchar(10), 
+            UTMZone2 varchar(5), 
 			Easting FLOAT, 
             Northing FLOAT, 
 			DateCollected DATETIME,
@@ -175,7 +189,7 @@ function createTables( mysql_conn )
 	let thinSectionDataTbl = { 
 		name: 'thinSectionData', 
 		query: SQL`CREATE TABLE thinSectionData(
-			TSDescID INT, 
+			TSDescID INT NOT NULL AUTO_INCREMENT, 
 			SampleID VARCHAR(20),
 			Subsample VARCHAR(10), 
             SampleIDKey INT, 
@@ -191,7 +205,8 @@ function createTables( mysql_conn )
             Mineralogy1 INT,
             Mineralogy2 INT,
             ClasticGrains1 INT,
-            ClasticGrains2 INT
+            ClasticGrains2 INT,
+			PRIMARY KEY (TSDescID)
         ); `
 	}
 
