@@ -72,7 +72,6 @@ function queryPromiseReject( err )
 //	not carried over. 
 //
 //
-// TODO: Replace A, B, C... with correct column names.
 // TODO: Add Relations. 
 // TODO: Enum data types
 // TODO: Add notnull characteristic to appropriate collumns. 
@@ -116,7 +115,6 @@ function createTables( mysql_conn )
             MegastructureType INT); ` 
 	}
 
-	//TODO: Check datatypes of D,M,N,O,P,Q,R 
 	let mesostructureDataTbl = {
 		name: 'mesostructureData', 
 		query: SQL`CREATE TABLE mesostructureData(
@@ -159,8 +157,6 @@ function createTables( mysql_conn )
             SampleID varchar(20));` 
 	}
 
-	//TODO: The date format in the CSV is backwards.  
-	//		Datetime needs to be in the format of YYYYMMDD HH:MM:SS
 	let samplesForARCTbl = { 
 		name: 'samplesForARC',
 		query: SQL`CREATE TABLE samplesForARC(
@@ -216,7 +212,6 @@ function createTables( mysql_conn )
 	//where the queries are made. 
 	for( let table of tables )
 	{
-		//console.log(table.query.sql); 
 		let queryPromise = sendQuery(mysql_conn, table.query.sql ); 
 		queryPromise.then( () => { console.log("Added table " + table.name);  }, queryPromiseReject ); 
 	}
