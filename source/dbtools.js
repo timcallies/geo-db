@@ -72,109 +72,198 @@ function queryPromiseReject( err )
 //	not carried over. 
 //
 //
-// TODO: Replace A, B, C... with correct column names.
 // TODO: Add Relations. 
 // TODO: Enum data types
 // TODO: Add notnull characteristic to appropriate collumns. 
+// NOTE: Not sure if loading into autoincrement column will work.
 function createTables( mysql_conn )
 {
 
 	//The following variables are SQL statements for creating the tables
 	//for our database. 
-	let microbilitesTbl = {
-		name: 'microbialites', 
-		query: SQL`CREATE TABLE microbialites( 
-			A FLOAT, 
-			B FLOAT, 
-			C varchar(20), 
-			D INT, E INT, F INT, G INT);` 
+	
+	
+	//Project Name is enum
+	//Section name ?? 
+	//waypoint is str
+	let wapointsTbl = {
+		name: 'Waypoints', 
+		query: SQL`CREATE TABLE Waypoints(
+			WaypointID INT NOT NULL AUTO_INCREMENT, 
+			Latitude  			FLOAT, 
+			Longitude 			FLOAT, 
+			Northing  			FLOAT, 
+			Easting   			FLOAT, 
+			UTMZone1  			INT, 
+			UTMZone2  			INT, 
+			Datum 	   			VARCHAR(20), 
+			Projection 			VARCHAR(5), 
+			Feildbook  			VARCHAR(50), 
+			FeildbookPage 	    INT, 
+			Formation 		    VARCHAR(20), 
+			SiteOrLocationName  VARCHAR(100),
+			DateCollected 		DATETIME, 
+			Elevation 			INT, 
+			ProjectName 		VARCHAR(20), 
+			Measured 			BOOLEAN, 
+			SectionName 		VARCHAR(20), 
+			Comments 			TEXT, 
+			PRIMARY KEY( WaypointID )
+		);`
 	}
 
-	let macrostructureDataTbl = {
-		name: 'macrostructureData', 
-		query: SQL`CREATE TABLE macrostructureData(
-			A INT, 
-			B INT, 
-			C varchar(100), 
-			D INT, E INT, 
-			F varchar(10) );`  
+			
+
+	let macrostructuresTbl = {
+		name: 'Macrostructures', 
+		query: SQL`CREATE TABLE Macrostructures(
+			MacrostructureID 	INT NOT NULL AUTO_INCREMENT, 
+			MacrostructureType 	INT, 
+			Comments 			TEXT, 
+			MegastructureType 	INT,
+            SectionHeight 		INT, 
+			Northing 			FLOAT, 
+			Easting 			FLOAT, 
+			Datum 				varchar(10), 
+			WaypointID 			INT, 
+			PRIMARY KEY( MacrostructureID ), 
+			FOREIGN KEY( WaypointID ) REFERENCES Waypoints(WaypointID)
+		);`  
 	}
 
-	let macrostructureLocationsTbl = {
-		name: 'macrostructureLocations', 
-		query: SQL`CREATE TABLE macrostructureLocations(
-			A varchar(1), 
-			B FLOAT, 
-			C FLOAT, 
-			D varchar(10), 
-			E INT, F INT ); ` 
+
+	let mesostructuresTbl = {
+		name: 'Mesostructures', 
+		query: SQL`CREATE TABLE Mesostructures(
+			MesostructureID 		INT NOT NULL AUTO_INCREMENT, 
+			SampleID 				varchar(20), 
+			SampleSize 				varchar(20),
+			FieldDescription 		varchar(50), 
+			RockDescription 		varchar(2000),
+			MesostructureDesc 		INT, 
+            LaminaShape 			INT, 
+			LaminaThickness 		FLOAT, 
+            MacrostructureID 		FLOAT, 
+			SynopticRelief 			FLOAT, 
+            Wavelength 				FLOAT, 
+			AmplitudeOrHeight 		INT, 
+			MesostructureTexture 	INT, 
+            MesostructureGrains 	INT, 
+            MesostructureTexture2 	INT, 
+            Analyst 				INT, 
+            LaminaInheritance 		INT, 
+            MesoClotShape 			INT,
+            MesoClotSize 			INT, 
+			PRIMARY KEY (MesostructureID),
+			FOREIGN KEY (MacrostructureID) REFERENCES Macrostructures(MacrostructureID)
+		);`
 	}
 
-	//TODO: Check datatypes of D,M,N,O,P,Q,R 
-	let mesostructureDataTbl = {
-		name: 'mesostructureData', 
-		query: SQL`CREATE TABLE mesostructureData(
-			A INT, 
-			B varchar(20), 
-			C varchar(20),
-			D INT, 
-			E TEXT,
-			F INT, G INT, 
-			H FLOAT, I FLOAT, 
-			J FLOAT, K FLOAT, 
-			L INT, 
-			M INT, N INT, O INT, P INT, Q INT, R INT );`
+	let thinSectionsTbl = { 
+		name: 'ThinSections', 
+		query: SQL`CREATE TABLE ThinSections(
+			TSDescID 			INT NOT NULL AUTO_INCREMENT, 
+			SampleID 			VARCHAR(20),
+			Subsample 			VARCHAR(10), 
+            MesostructureID 	INT NOT NULL, 
+			TSDescription 		TEXT, 
+			PrimaryTexture 		INT, 
+            SecondaryTexture 	INT, 
+            Cement1 			INT, 
+            Porosity1 			INT, 
+			Cement2 			INT, 
+            Porosity2			INT, 
+            PorosityPercentEst 	INT, 
+            CementFill 			BOOLEAN, 
+            Mineralogy1 		INT,
+            Mineralogy2 		INT,
+            ClasticGrains1 		INT,
+            ClasticGrains2 		INT,
+			PRIMARY KEY (TSDescID),
+			FOREIGN KEY (Mesostructure) REFERENCES Mesostructures(MesostructureID)
+        ); `
 	}
 
+	// TODO: Relative file paths.  
 	let photoLinksDataTbl = {
-		name: 'photoLinksData', 
-		query: SQL`CREATE TABLE photoLinksData(
-			A INT, B INT, C INT, D INT, E INT, F INT, 
-			G INT, H INT, I INT, J INT, K INT, 
-			L TEXT, M INT);` 
+		name: 'PhotoLinks', 
+		query: SQL`CREATE TABLE photoLinks(
+			PhotoID 		INT NOT NULL AUTO_INCREMENT, 
+            OutcropPhoto 	BOOLEAN, 
+            Photomicrograph BOOLEAN, 
+			CLImage 		BOOLEAN, 
+            OtherImage 		BOOLEAN, 
+			TSOverview 		BOOLEAN, 
+            OtherDocument 	BOOLEAN, 
+			WaypointID 		INT, 
+			MacrostructureID INT, 
+            MesostructureID INT,
+            TSDescID 		INT, 
+            PhotoLinkRelative TEXT, 
+
+			PRIMARY KEY (PhotoIDKey), 
+			FOREIGN KEY (MacrostructureID) REFERENCES Macrostructures(MacrostructureID),
+			FOREIGN KEY (TSDescID) REFERENCES ThinSections(TSDescID),
+			FOREIGN KEY (WaypointID) REFERENCES Waypoints(waypointID),
+			FOREIGN KEY (MesostructureID) REFERENCES Mesostructures(MesostructureID)
+		);` 
 	}
 
-	//TODO: The date format in the CSV is backwards.  
-	//		Datetime needs to be in the format of YYYYMMDD HH:MM:SS
+
+	// no relation
+	let microbilitesTbl = {
+		name: 'Microbialites', 
+		query: SQL`CREATE TABLE microbialites( 
+			Northing 			FLOAT, 
+			Easting 			FLOAT, 
+			SampleID 			varchar(20) NOT NULL, 
+			MacrostructureType 	INT, 
+            MesostructureDesc 	INT, 
+            LaminaShape			INT, 
+            LaminaInheritance 	INT,
+			PRIMARY KEY( SampleID )
+		);` 
+	}
+
+
+	// no relation
 	let samplesForARCTbl = { 
-		name: 'samplesForARC',
-		query: SQL`CREATE TABLE samplesForARC(
-			A VARCHAR(20), B VARCHAR(20), 
-			C INT, D CHAR, 
-			E FLOAT, F FLOAT, 
-			G DATETIME,
-			H INT, I INT ); ` 
+		name: 'SamplesForARC',
+		query: SQL`CREATE TABLE SamplesForARC(
+			SampleID 			VARCHAR(20) NOT NULL, 
+            Datum 				VARCHAR(20), 
+			UTMZone1 			INT, 
+            UTMZone2 			CHAR(1), 
+			Easting 			FLOAT, 
+            Northing 			FLOAT, 
+			DateCollected 		DATETIME,
+			MacrostructureType 	INT, 
+            MacrostructureDesc 	INT,
+			PRIMARY KEY (SampleID), 
+		); ` 
 	}
 
-	//check datatype of C, .
-	let thinSectionDataTbl = { 
-		name: 'thinSectionData', 
-		query: SQL`CREATE TABLE thinSectionData(
-			A INT, 
-			B VARCHAR(20),
-			C INT, D INT, 
-			E TEXT, 
-			F INT, G INT, H INT, I INT, 
-			J INT, K INT, L INT, M INT, N INT ); `
-	}
 
+	// no relation
 	let thrombolitesOnlyTbl = {
-		name: 'thrombolitesOnly', 
-		query: SQL`CREATE TABLE thrombolitesOnly(
-			A FLOAT, B FLOAT, 
-			C VARCHAR(20), 
-			D INT ); `
+		name: 'ThrombolitesOnly', 
+		query: SQL`CREATE TABLE ThrombolitesOnly(
+			Northing 	FLOAT, 
+            Easting 	FLOAT, 
+			SampleID 	VARCHAR(20), 
+			MesostructureDesc INT,
+			PRIMARY KEY (SampleID)
+		); `
 	}
 
-	var tables = [microbilitesTbl, macrostructureDataTbl, macrostructureLocationsTbl, 
-		mesostructureDataTbl, photoLinksDataTbl, 
-		samplesForARCTbl, thinSectionDataTbl, thrombolitesOnlyTbl];
+	var tables = [waypointsTbl, macrostructuresTbl, mesostructuresTbl,
+		 thinSectionsTbl, photoLinksDataTbl, microbilitesTbl,
+		 samplesForARCTbl, thrombolitesOnlyTbl];
 
 
 	//where the queries are made. 
 	for( let table of tables )
 	{
-		//console.log(table.query.sql); 
 		let queryPromise = sendQuery(mysql_conn, table.query.sql ); 
 		queryPromise.then( () => { console.log("Added table " + table.name);  }, queryPromiseReject ); 
 	}
