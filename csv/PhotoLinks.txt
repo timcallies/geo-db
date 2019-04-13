@@ -1,4 +1,4 @@
-"keyPhotoID","OutcropPhoto","Photomicrograph","CLImage","OtherImage","TSOverview","OtherDocument","WayptIDKey","MacrostructureID","SampleIDKey","TSDescID","PhotoLinkRelative2"
+"keyPhotoID","OutcropPhoto","Photomicrograph","CLImage","OtherImage","TSOverview","OtherDocument","WayptIDKey","MacrostructureID","MesostructureID","TSID","PhotoLinkRelative"
 2,1,0,0,0,0,0,,2,3,0,"\Photos\USTProject\2016_JanuaryFieldPhotos\Hickson\16_WB_1_MACRO2.JPG"
 3,1,0,0,0,0,0,,2,3,0,"\Photos\USTProject\2016_JanuaryFieldPhotos\Hickson\16_WB_1_MACRO3.JPG"
 4,1,0,0,0,0,0,,2,3,0,"\Photos\USTProject\2016_JanuaryFieldPhotos\Hickson\16_WB_1_MACRO4.JPG"

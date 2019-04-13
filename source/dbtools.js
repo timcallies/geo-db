@@ -1,8 +1,7 @@
 /*				dbtools.js
  *
  *	This module contains functions that are meant to 
- *	aid the developers of this application in the 
- *	administration / maintainance of the database. 
+ *	aid the developers of this application in the administration / maintainance of the database. 
  *
  *
  *  Public methods: 
@@ -24,8 +23,7 @@ module.exports = { sendQuery, restoreFromCSV, createTables }
 
 
 
-/* 
- * This is a general purpose helper function 
+/* This is a general purpose helper function 
  * for sending queries to the geodb using the 'me'
  * user.  This function does not sanatize sql input. 
  */
@@ -118,13 +116,13 @@ function createTables( mysql_conn )
 		query: SQL`CREATE TABLE Macrostructures(
             MacrostructureID    INT NOT NULL AUTO_INCREMENT, 
             MacrostructureType  INT, 
-            Comments            TEXT, 
             MegastructureType   INT,
             SectionHeight       INT, 
             Northing            FLOAT, 
             Easting             FLOAT, 
             Datum               varchar(10), 
-            WaypointID          INT, 
+            WaypointID          INT NOT NULL, 
+            Comments            TEXT, 
             PRIMARY KEY( MacrostructureID ), 
             FOREIGN KEY( WaypointID ) REFERENCES Waypoints(WaypointID)
 		);`  
@@ -140,9 +138,8 @@ function createTables( mysql_conn )
             FieldDescription        varchar(50), 
             RockDescription         varchar(2000),
             MesostructureDesc       INT, 
-            LaminaShape             INT, 
+            MacrostructureID        INT NOT NULL, 
             LaminaThickness         FLOAT, 
-            MacrostructureID        INT, 
             SynopticRelief          FLOAT, 
             Wavelength              FLOAT, 
             AmplitudeOrHeight       INT, 
@@ -150,6 +147,7 @@ function createTables( mysql_conn )
             MesostructureGrains     INT, 
             MesostructureTexture2   INT, 
             Analyst                 INT, 
+            LaminaShape             INT, 
             LaminaInheritance       INT, 
             MesoClotShape           INT,
             MesoClotSize            INT, 
@@ -161,8 +159,8 @@ function createTables( mysql_conn )
 	let thinSectionsTbl = { 
 		name: 'ThinSections', 
 		query: SQL`CREATE TABLE ThinSections(
-            TSDescID            INT NOT NULL AUTO_INCREMENT, 
-            SampleID            VARCHAR(20),
+            TSID            INT NOT NULL AUTO_INCREMENT, 
+            SampleID            VARCHAR(20) NOT NULL,
             Subsample           VARCHAR(10), 
             MesostructureID     INT NOT NULL, 
             TSDescription       TEXT, 
@@ -178,7 +176,7 @@ function createTables( mysql_conn )
             Mineralogy2         INT,
             ClasticGrains1      INT,
             ClasticGrains2      INT,
-            PRIMARY KEY (TSDescID),
+            PRIMARY KEY (TSID),
             FOREIGN KEY (MesostructureID) REFERENCES Mesostructures(MesostructureID)
         ); `
 	}
@@ -197,7 +195,7 @@ function createTables( mysql_conn )
             WaypointID          INT, 
             MacrostructureID    INT, 
             MesostructureID     INT,
-            TSDescID            INT, 
+            TSID                INT, 
             PhotoLinkRelative   TEXT, 
             PRIMARY KEY (PhotoID), 
             FOREIGN KEY (MacrostructureID) REFERENCES Macrostructures(MacrostructureID),
@@ -308,7 +306,7 @@ function restoreFromCSV( mysql_conn )
 
 	function restoreData(tableName)
 	{
-		let queryString = "LOAD DATA LOCAL INFILE './../csv/" + tableName + ".txt' INTO TABLE " + tableName + " FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n'; " ;
+		let queryString = "LOAD DATA LOCAL INFILE './../csv/" + tableName + ".txt' INTO TABLE " + tableName + " FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' IGNORE 1 LINES; " ;
 		sendQuery(mysql_conn, queryString); 
 	}
 

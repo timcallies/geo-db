@@ -1,4 +1,4 @@
-"SampleIDKey","SampleID","SampleSize","FieldDescription","RockDescription","MesostructureDesc","MacrostructureID","LaminaThickness","SynopticRelief","Wavelength","AmplitudeOrHeight","MesostructureTexture","MesostructureGrains","MesostructureTexture2","Analyst1","LaminaShape","Lamina Inheritance","MesoCLotShape","MesoClotSize"
+"MestructureID","SampleID","SampleSize","FieldDescription","RockDescription","MesostructureDesc","MacrostructureID","LaminaThickness","SynopticRelief","Wavelength","AmplitudeOrHeight","MesostructureTexture","MesostructureGrains","MesostructureTexture2","Analyst1","LaminaShape","Lamina Inheritance","MesoCLotShape","MesoClotSize"
 1,"15-HS-SBR-1A","Hand",,"Massive pisolite",23,14,0.00,0.00,0.00,0.00,24,,,,,,,
 2,"15-HS-SBR-1B","Hand",,"Cryptically stratiform layering. Almost massive looking on outcrop",31,14,1.00,0.00,0.00,0.00,,,,,1,,,
 3,"16-WB-1","Fist","Laminated top of a domal stromatolite.","Possible stromatolite in gypsum units.",31,2,0.00,0.00,0.00,0.00,,,,"EB",6,,,
