@@ -1,114 +1,115 @@
-46,4,,,0,"1",4024809.35,718462.07,"NAD83"
-53,3,,,0,"1",4024809.35,718462.07,"NAD83"
-156,11,"TEST",,0,"1",4024809.35,718462.07,"NAD83"
-2,16,"Possible microbialite in gypsum","1",0,"2",4025664.06,717807.29,"NAD83"
-3,16,"Massive domal build-up, not layered","1",0,"3",4026125.60,717750.87,"NAD83"
-144,4,"Thrombolitic bioherm with underlying and onlapping overlying stratiform units. Thrombolitic mound.",,0,"3",4026125.60,717750.87,"NAD83"
-4,3,"Small domal strom with onlapping laminated stroms. Thrombolitic core of strom.","1",0,"4",4026859.20,718292.41,"NAD83"
-5,5,"Small dendrolite with onlapping strat stroms","1",0,"5",4026850.47,718324.77,"NAD83"
-6,4,"Large, 2 m synoptic relief mound with very irregular internal fabric. Possible tufa mound?","1",0,"6",4026983.54,718133.75,"NAD83"
-7,3,,,0,"7",4027028.04,718102.10,"NAD83"
-8,16,"Dm scale synoptic relief domal stroms with 30 cm wavelength.","1",0,"8",4027100.09,718071.10,"NAD83"
-14,9,"Pisolite filled intrusion, possible spring vent?","1",0,"69",4025608.32,717630.59,"NAD83"
-15,4,"Compound structure with 20 cm synoptic relief","1",0,"70",4025614.97,717616.78,"NAD83"
-16,3,"Looks like cluster of small, domal stroms that comprise composite macrostructure","1",0,"70",4025614.97,717616.78,"NAD83"
-17,12,"Gorilla Bed: round depression on bedding plane with laminated fabrics growing concentrically from center","3",0,"70",4025614.97,717616.78,"NAD83"
-18,4,"Thrombolitic interior. Dom has about 20 cm synoptic relief","1",0,"72",4025690.28,717538.46,"NAD83"
-19,4,"Thrombolitic texture with weak radial columnar fabric.","1",0,"75",4025875.51,717482.89,"NAD83"
-20,11,"Gorilla bed depression??","1",0,"78",4025919.58,717460.86,"NAD83"
-21,12,"Gorilla mount/bed with great texture but neither domal or pillar like.","3",0,"79",4025924.15,717456.88,"NAD83"
-22,16,"25 cm wide massive looking dome.  Small domal mounds with internal layering.  Mounds range from 10 cm to 2 cm.","1",0,"92",4026362.06,718059.33,"NAD83"
-24,3,"Small biscuits","1",0,"93",4026639.35,718137.12,"NAD83"
-25,12,"Gorill bed with more of a laminated texture. Not as much of a pillar texture as WP 91.","3",0,"94",4026983.95,717964.65,"NAD83"
-26,12,"Gorilla 'like' beds with irregular internal mounds and layering","3",0,"95",4026984.21,717970.57,"NAD83"
-27,12,,"3",0,"98",4023013.04,715752.98,"NAD83"
-28,15,"FRU type locality","4",0,"27",4024919.06,717827.54,"NAD83"
-29,11,"Nearby FRU, not as well developed",,0,"27",4024919.06,717827.54,"NAD83"
-55,7,"Part of an FRU unit","2",0,"27",4024919.06,717827.54,"NAD83"
-30,16,,"1",0,"31",4025133.83,717767.89,"NAD83"
-184,12,,"3",0,"31",4025133.83,717767.89,"NAD83"
-31,4,"Concave up gorilla bed","1",0,"32",4025214.32,717803.32,"NAD83"
-32,4,,"1",0,"32",4025214.32,717803.32,"NAD83"
-33,4,,"1",0,"82",4025235.66,717800.00,"NAD83"
-34,11,,,0,"83",4025234.51,717798.41,"NAD83"
-35,4,"20 cm synoptic relief","1",0,"85",4025327.88,717789.60,"NAD83"
-36,11,"Float",,0,"85",4025327.88,717789.60,"NAD83"
-37,16,"Smallish gorilla bed with dome in middle","1",0,"86",4025406.17,717737.16,"NAD83"
-38,3,"10 cm wide biscuit","1",0,"87",4025483.92,717688.50,"NAD83"
-39,16,"Large domal strom with 30 cm synoptic relief and coarse, radial, columnar fabric","1",0,"30",4025512.80,717695.23,"NAD83"
-40,17,"Flattened lens of peloidal limestone","1",0,"31",4025509.74,717670.52,"NAD83"
-41,9,"Strong vertical columnar structure","1",0,"33",4025546.25,717661.16,"NAD83"
-42,17,"Edge of gorilla bed?","1",0,"36",4026188.39,718062.62,"NAD83"
-56,14,"Teepee structure","1",0,"22",4019303.16,721747.52,"NAD83"
-181,14,"Teepee structure with two samples, one from core and one from flanks, probably stratiform.","1",0,"25",4027269.58,717712.06,"NAD83"
-182,14,"First sample is from mm stratiform units on flank. Second is from crinkly-laminated, wavy units in core, below first.","1",0,"28",4027194.67,717761.62,"NAD83"
-183,3,,"1",0,"29",4027019.81,717924.96,"NAD83"
-195,3,,"1",0,"202",4026891.08,718209.62,"NAD83"
-196,12,,"3",0,"204",4026909.93,718230.70,"NAD83"
-197,3,"one from a cluster of 10+ small, biscuit-like structures","1",0,"205",4026884.43,718240.95,"NAD83"
-188,7,"Could be oncolites in a stratiform bed","2",0,"44",4022247.48,712995.41,"NAD83"
-189,11,"Difficult to discern type from photos",,0,"45",4022202.13,712947.92,"NAD83"
-190,7,"Based on photos the macrostructure that was sampled may be structural. Looks a bit like a slump/small fault.","2",0,"46",4022249.42,712997.52,"NAD83"
-191,13,"Lowest portion is stratiform, with sample A. This unit is erosionally (?) truncated and filled with a laminated, wavy-domal laminated material (B). Above this is a nodular to cryptically laminated interval with sample C. Sample D is from a laterally adjacent interval, possibly from float.",,0,"46",4022249.42,712997.52,"NAD83"
-288,14,,"4",0,"47",4022227.00,712984.33,"NAD83"
-192,7,"Thrombolitic mound overlying stratiform stroms","2",0,"48",4022220.53,712974.06,"NAD83"
-193,13,"A, B, and C come from same location. D appears to be from laterally adjacent area. Not same overview photos here.","1",0,"49",4022071.40,712583.05,"NAD83"
-185,4,"12 cm thick massive bed with possible, cryptic layering and high porosity.","1",0,"41",4022235.11,713002.63,"NAD83"
-194,7,,"2",0,"51",4021981.56,712418.69,"NAD83"
-186,16,,"1",0,"42",4022239.67,713002.79,"NAD83"
-187,7,"Hard to tell structure well from photos.",,0,"42",4022239.67,713002.79,"NAD83"
-172,7,,"2",0,"4",4022178.05,712903.14,"NAD83"
-173,14,,,0,"4",4022178.05,712903.14,"NAD83"
-174,7,"Stratiform, crinkly laminated bed above small domal (?) stroms","2",0,"5",4022180.55,712900.84,"NAD83"
-198,7,,"2",0,"5b",4022176.86,712896.41,"NAD83"
-177,7,,"2",0,"8",4022151.04,712666.54,"NAD83"
-178,3,,"1",0,"9",4022148.72,712662.46,"NAD83"
-179,7,,"2",0,"10",4022070.43,712584.51,"NAD83"
-176,3,,,0,"7",4022154.33,712655.86,"NAD83"
-199,3,"Large encrusting clasts, finely laminated bu with wavy pore space. Closer downhill has finer laminations with no pore space and much smaller clasts.",,0,"2F",4120885.00,670279.00,"NAD83"
-206,14,"Microlaminated digitate stromatolite","1",0,,4024711.00,717965.00,"NAD27"
-207,11,"Carbonate rinds on paleo-lakeshore, sampled 3 m above dry lake bed encrusting volcanics",,0,,4117930.00,675413.00,"NAD83"
-264,15,,"4",0,"122",4025030.00,717470.00,"NAD83"
-222,4,"Eric imaged this for agisoft reconstruction. Lower part of dome looks dendrolitiic but upper part has layered, columnar stroms.",,0,"123",4025010.00,717442.00,"NAD83"
-265,13,,"1",0,"123",4025010.00,717442.00,"NAD83"
-267,7,,"2",0,"143",4022990.00,714726.00,"NAD83"
-268,4,,"1",0,"148",4023030.00,715290.00,"NAD83"
-269,7,,"2",0,"155",4019190.00,710755.00,"NAD83"
-270,7,,"2",0,"158",4021040.00,711624.00,"NAD83"
-271,7,,"2",0,"161",4021150.00,711933.00,"NAD83"
-272,4,,"1",0,"163",4021310.00,712057.00,"NAD83"
-277,13,"Mostly stratiform with one med domal thrombolite","2",0,"84",4022270.00,713011.00,"NAD83"
-278,13,,"2",0,"86",4022200.00,712915.00,"NAD83"
-279,3,,"1",0,"89",4022160.00,712677.00,"NAD83"
-280,16,,"1",0,"91",4021940.00,712383.00,"NAD83"
-281,4,,"1",0,"95",4021670.00,712397.00,"NAD83"
-282,3,,"1",0,"97",4021630.00,712384.00,"NAD83"
-283,4,,"1",0,"14",4008890.00,707095.00,"NAD83"
-226,4,,"1",0,"179",4025138.30,717864.04,
-227,4,,"1",0,"180",4025126.68,717866.08,
-228,4,,"1",0,"181",4025120.67,717869.85,
-229,15,,"4",0,"100",4024726.08,717910.84,
-230,15,,"4",0,"100",4024726.08,717910.84,
-232,16,,"1",0,"100",4024726.08,717910.84,
-233,7,,"2",0,"100",4024726.08,717910.84,
-234,12,,"3",0,"100",4024726.08,717910.84,
-236,7,,"2",0,"100",4024726.08,717910.84,
-238,7,,"2",0,"100",4024726.08,717910.84,
-239,9,,"1",0,"100",4024726.08,717910.84,
-240,12,,"3",0,"183",4024658.98,717949.32,
-241,7,,"2",0,"101",4024729.11,717921.18,
-243,3,,"1",0,"102",4024724.45,717929.92,
-245,3,,"1",0,"187",4024695.37,717955.84,
-246,16,,"1",0,"188",4024708.58,717962.92,
-247,3,,"1",0,"188",4024708.58,717962.92,
-248,4,,"1",0,"189",4024711.39,717960.18,
-250,12,,"3",0,"191",4024583.57,716836.13,
-251,16,,"1",0,"203",4023815.41,716177.35,
-252,11,,"4",0,"206",4021972.13,712749.44,
-254,15,,"4",0,"105",4021960.39,712749.88,
-255,7,,"2",0,"208",4021947.44,712735.52,
-256,16,,"1",0,"106",4021889.27,712688.29,
-257,3,,"1",0,"1A",4120838.35,670255.03,
-258,3,,"1",0,"1F",4120865.66,670261.27,
-261,3,,"1",0,"109",4120551.76,669793.25,
-263,7,,"2",0,"168",4121334.14,670153.35,
+"MacrostructureID","MacrostructureType","MegastructureType","SectionHeight","Northing","Easting","Datum","WayptID","Comments"
+46,4,,0,4024809.35,718462.07,"NAD83",1,
+53,3,,0,4024809.35,718462.07,"NAD83",1,
+156,11,,0,4024809.35,718462.07,"NAD83",1,"TEST"
+2,16,"1",0,4025664.06,717807.29,"NAD83",2,"Possible microbialite in gypsum"
+3,16,"1",0,4026125.60,717750.87,"NAD83",3,"Massive domal build-up, not layered"
+144,4,,0,4026125.60,717750.87,"NAD83",3,"Thrombolitic bioherm with underlying and onlapping overlying stratiform units. Thrombolitic mound."
+4,3,"1",0,4026859.20,718292.41,"NAD83",4,"Small domal strom with onlapping laminated stroms. Thrombolitic core of strom."
+5,5,"1",0,4026850.47,718324.77,"NAD83",5,"Small dendrolite with onlapping strat stroms"
+6,4,"1",0,4026983.54,718133.75,"NAD83",6,"Large, 2 m synoptic relief mound with very irregular internal fabric. Possible tufa mound?"
+7,3,,0,4027028.04,718102.10,"NAD83",7,
+8,16,"1",0,4027100.09,718071.10,"NAD83",8,"Dm scale synoptic relief domal stroms with 30 cm wavelength."
+14,9,"1",0,4025608.32,717630.59,"NAD83",14,"Pisolite filled intrusion, possible spring vent?"
+15,4,"1",0,4025614.97,717616.78,"NAD83",15,"Compound structure with 20 cm synoptic relief"
+16,3,"1",0,4025614.97,717616.78,"NAD83",15,"Looks like cluster of small, domal stroms that comprise composite macrostructure"
+17,12,"3",0,4025614.97,717616.78,"NAD83",15,"Gorilla Bed: round depression on bedding plane with laminated fabrics growing concentrically from center"
+18,4,"1",0,4025690.28,717538.46,"NAD83",17,"Thrombolitic interior. Dom has about 20 cm synoptic relief"
+19,4,"1",0,4025875.51,717482.89,"NAD83",20,"Thrombolitic texture with weak radial columnar fabric."
+20,11,"1",0,4025919.58,717460.86,"NAD83",23,"Gorilla bed depression??"
+21,12,"3",0,4025924.15,717456.88,"NAD83",24,"Gorilla mount/bed with great texture but neither domal or pillar like."
+22,16,"1",0,4026362.06,718059.33,"NAD83",37,"25 cm wide massive looking dome.  Small domal mounds with internal layering.  Mounds range from 10 cm to 2 cm."
+24,3,"1",0,4026639.35,718137.12,"NAD83",38,"Small biscuits"
+25,12,"3",0,4026983.95,717964.65,"NAD83",39,"Gorill bed with more of a laminated texture. Not as much of a pillar texture as WP 91."
+26,12,"3",0,4026984.21,717970.57,"NAD83",40,"Gorilla 'like' beds with irregular internal mounds and layering"
+27,12,"3",0,4023013.04,715752.98,"NAD83",43,
+28,15,"4",0,4024919.06,717827.54,"NAD83",57,"FRU type locality"
+29,11,,0,4024919.06,717827.54,"NAD83",57,"Nearby FRU, not as well developed"
+55,7,"2",0,4024919.06,717827.54,"NAD83",57,"Part of an FRU unit"
+30,16,"1",0,4025133.83,717767.89,"NAD83",58,
+184,12,"3",0,4025133.83,717767.89,"NAD83",58,
+31,4,"1",0,4025214.32,717803.32,"NAD83",59,"Concave up gorilla bed"
+32,4,"1",0,4025214.32,717803.32,"NAD83",59,
+33,4,"1",0,4025235.66,717800.00,"NAD83",60,
+34,11,,0,4025234.51,717798.41,"NAD83",61,
+35,4,"1",0,4025327.88,717789.60,"NAD83",62,"20 cm synoptic relief"
+36,11,,0,4025327.88,717789.60,"NAD83",62,"Float"
+37,16,"1",0,4025406.17,717737.16,"NAD83",63,"Smallish gorilla bed with dome in middle"
+38,3,"1",0,4025483.92,717688.50,"NAD83",64,"10 cm wide biscuit"
+39,16,"1",0,4025512.80,717695.23,"NAD83",65,"Large domal strom with 30 cm synoptic relief and coarse, radial, columnar fabric"
+40,17,"1",0,4025509.74,717670.52,"NAD83",66,"Flattened lens of peloidal limestone"
+41,9,"1",0,4025546.25,717661.16,"NAD83",67,"Strong vertical columnar structure"
+42,17,"1",0,4026188.39,718062.62,"NAD83",68,"Edge of gorilla bed?"
+56,14,"1",0,4019303.16,721747.52,"NAD83",118,"Teepee structure"
+181,14,"1",0,4027269.58,717712.06,"NAD83",119,"Teepee structure with two samples, one from core and one from flanks, probably stratiform."
+182,14,"1",0,4027194.67,717761.62,"NAD83",120,"First sample is from mm stratiform units on flank. Second is from crinkly-laminated, wavy units in core, below first."
+183,3,"1",0,4027019.81,717924.96,"NAD83",121,
+195,3,"1",0,4026891.08,718209.62,"NAD83",128,
+196,12,"3",0,4026909.93,718230.70,"NAD83",130,
+197,3,"1",0,4026884.43,718240.95,"NAD83",131,"one from a cluster of 10+ small, biscuit-like structures"
+188,7,"2",0,4022247.48,712995.41,"NAD83",132,"Could be oncolites in a stratiform bed"
+189,11,,0,4022202.13,712947.92,"NAD83",133,"Difficult to discern type from photos"
+190,7,"2",0,4022249.42,712997.52,"NAD83",135,"Based on photos the macrostructure that was sampled may be structural. Looks a bit like a slump/small fault."
+191,13,,0,4022249.42,712997.52,"NAD83",135,"Lowest portion is stratiform, with sample A. This unit is erosionally (?) truncated and filled with a laminated, wavy-domal laminated material (B). Above this is a nodular to cryptically laminated interval with sample C. Sample D is from a laterally adjacent interval, possibly from float."
+288,14,"4",0,4022227.00,712984.33,"NAD83",136,
+192,7,"2",0,4022220.53,712974.06,"NAD83",137,"Thrombolitic mound overlying stratiform stroms"
+193,13,"1",0,4022071.40,712583.05,"NAD83",138,"A, B, and C come from same location. D appears to be from laterally adjacent area. Not same overview photos here."
+185,4,"1",0,4022235.11,713002.63,"NAD83",140,"12 cm thick massive bed with possible, cryptic layering and high porosity."
+194,7,"2",0,4021981.56,712418.69,"NAD83",141,
+186,16,"1",0,4022239.67,713002.79,"NAD83",144,
+187,7,,0,4022239.67,713002.79,"NAD83",144,"Hard to tell structure well from photos."
+172,7,"2",0,4022178.05,712903.14,"NAD83",145,
+173,14,,0,4022178.05,712903.14,"NAD83",145,
+174,7,"2",0,4022180.55,712900.84,"NAD83",146,"Stratiform, crinkly laminated bed above small domal (?) stroms"
+198,7,"2",0,4022176.86,712896.41,"NAD83",147,
+177,7,"2",0,4022151.04,712666.54,"NAD83",149,
+178,3,"1",0,4022148.72,712662.46,"NAD83",150,
+179,7,"2",0,4022070.43,712584.51,"NAD83",151,
+176,3,,0,4022154.33,712655.86,"NAD83",152,
+199,3,,0,4120885.00,670279.00,"NAD83",160,"Large encrusting clasts, finely laminated bu with wavy pore space. Closer downhill has finer laminations with no pore space and much smaller clasts."
+206,14,"1",0,4024711.00,717965.00,"NAD27",161,"Microlaminated digitate stromatolite"
+207,11,,0,4117930.00,675413.00,"NAD83",162,"Carbonate rinds on paleo-lakeshore, sampled 3 m above dry lake bed encrusting volcanics"
+264,15,"4",0,4025030.00,717470.00,"NAD83",720,
+222,4,,0,4025010.00,717442.00,"NAD83",721,"Eric imaged this for agisoft reconstruction. Lower part of dome looks dendrolitiic but upper part has layered, columnar stroms."
+265,13,"1",0,4025010.00,717442.00,"NAD83",721,
+267,7,"2",0,4022990.00,714726.00,"NAD83",741,
+268,4,"1",0,4023030.00,715290.00,"NAD83",746,
+269,7,"2",0,4019190.00,710755.00,"NAD83",753,
+270,7,"2",0,4021040.00,711624.00,"NAD83",756,
+271,7,"2",0,4021150.00,711933.00,"NAD83",759,
+272,4,"1",0,4021310.00,712057.00,"NAD83",761,
+277,13,"2",0,4022270.00,713011.00,"NAD83",825,"Mostly stratiform with one med domal thrombolite"
+278,13,"2",0,4022200.00,712915.00,"NAD83",827,
+279,3,"1",0,4022160.00,712677.00,"NAD83",830,
+280,16,"1",0,4021940.00,712383.00,"NAD83",832,
+281,4,"1",0,4021670.00,712397.00,"NAD83",836,
+282,3,"1",0,4021630.00,712384.00,"NAD83",838,
+283,4,"1",0,4008890.00,707095.00,"NAD83",846,
+226,4,"1",0,4025138.30,717864.04,,876,
+227,4,"1",0,4025126.68,717866.08,,877,
+228,4,"1",0,4025120.67,717869.85,,878,
+229,15,"4",0,4024726.08,717910.84,,881,
+230,15,"4",0,4024726.08,717910.84,,881,
+232,16,"1",0,4024726.08,717910.84,,881,
+233,7,"2",0,4024726.08,717910.84,,881,
+234,12,"3",0,4024726.08,717910.84,,881,
+236,7,"2",0,4024726.08,717910.84,,881,
+238,7,"2",0,4024726.08,717910.84,,881,
+239,9,"1",0,4024726.08,717910.84,,881,
+240,12,"3",0,4024658.98,717949.32,,882,
+241,7,"2",0,4024729.11,717921.18,,883,
+243,3,"1",0,4024724.45,717929.92,,885,
+245,3,"1",0,4024695.37,717955.84,,889,
+246,16,"1",0,4024708.58,717962.92,,890,
+247,3,"1",0,4024708.58,717962.92,,890,
+248,4,"1",0,4024711.39,717960.18,,891,
+250,12,"3",0,4024583.57,716836.13,,893,
+251,16,"1",0,4023815.41,716177.35,,894,
+252,11,"4",0,4021972.13,712749.44,,897,
+254,15,"4",0,4021960.39,712749.88,,900,
+255,7,"2",0,4021947.44,712735.52,,901,
+256,16,"1",0,4021889.27,712688.29,,904,
+257,3,"1",0,4120838.35,670255.03,,921,
+258,3,"1",0,4120865.66,670261.27,,926,
+261,3,"1",0,4120551.76,669793.25,,939,
+263,7,"2",0,4121334.14,670153.35,,968,
