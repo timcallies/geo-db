@@ -86,48 +86,47 @@ function createTables( mysql_conn )
 	//Project Name is enum
 	//Section name ?? 
 	//waypoint is str
-	let wapointsTbl = {
+	let waypointsTbl = {
 		name: 'Waypoints', 
 		query: SQL`CREATE TABLE Waypoints(
-			WaypointID INT NOT NULL AUTO_INCREMENT, 
-			Latitude  			FLOAT, 
-			Longitude 			FLOAT, 
-			Northing  			FLOAT, 
-			Easting   			FLOAT, 
-			UTMZone1  			INT, 
-			UTMZone2  			INT, 
-			Datum 	   			VARCHAR(20), 
-			Projection 			VARCHAR(5), 
-			Feildbook  			VARCHAR(50), 
-			FeildbookPage 	    INT, 
-			Formation 		    VARCHAR(20), 
+			WaypointID          INT NOT NULL AUTO_INCREMENT, 
+			Latitude            FLOAT, 
+			Longitude           FLOAT, 
+			Northing            FLOAT, 
+			Easting             FLOAT, 
+			UTMZone1            INT, 
+			UTMZone2            INT, 
+			Datum               VARCHAR(20), 
+			Projection          VARCHAR(5), 
+			Feildbook           VARCHAR(50), 
+			FeildbookPage       INT, 
+			Formation           VARCHAR(20), 
 			SiteOrLocationName  VARCHAR(100),
-			DateCollected 		DATETIME, 
-			Elevation 			INT, 
-			ProjectName 		VARCHAR(20), 
-			Measured 			BOOLEAN, 
-			SectionName 		VARCHAR(20), 
-			Comments 			TEXT, 
+			DateCollected       DATETIME, 
+			Elevation           INT, 
+			ProjectName         VARCHAR(20), 
+			Measured            BOOLEAN, 
+			SectionName         VARCHAR(20), 
+			Comments            TEXT, 
 			PRIMARY KEY( WaypointID )
 		);`
 	}
 
 			
-
 	let macrostructuresTbl = {
 		name: 'Macrostructures', 
 		query: SQL`CREATE TABLE Macrostructures(
-			MacrostructureID 	INT NOT NULL AUTO_INCREMENT, 
-			MacrostructureType 	INT, 
-			Comments 			TEXT, 
-			MegastructureType 	INT,
-            SectionHeight 		INT, 
-			Northing 			FLOAT, 
-			Easting 			FLOAT, 
-			Datum 				varchar(10), 
-			WaypointID 			INT, 
-			PRIMARY KEY( MacrostructureID ), 
-			FOREIGN KEY( WaypointID ) REFERENCES Waypoints(WaypointID)
+            MacrostructureID    INT NOT NULL AUTO_INCREMENT, 
+            MacrostructureType  INT, 
+            Comments            TEXT, 
+            MegastructureType   INT,
+            SectionHeight       INT, 
+            Northing            FLOAT, 
+            Easting             FLOAT, 
+            Datum               varchar(10), 
+            WaypointID          INT, 
+            PRIMARY KEY( MacrostructureID ), 
+            FOREIGN KEY( WaypointID ) REFERENCES Waypoints(WaypointID)
 		);`  
 	}
 
@@ -135,77 +134,76 @@ function createTables( mysql_conn )
 	let mesostructuresTbl = {
 		name: 'Mesostructures', 
 		query: SQL`CREATE TABLE Mesostructures(
-			MesostructureID 		INT NOT NULL AUTO_INCREMENT, 
-			SampleID 				varchar(20), 
-			SampleSize 				varchar(20),
-			FieldDescription 		varchar(50), 
-			RockDescription 		varchar(2000),
-			MesostructureDesc 		INT, 
-            LaminaShape 			INT, 
-			LaminaThickness 		FLOAT, 
-            MacrostructureID 		FLOAT, 
-			SynopticRelief 			FLOAT, 
-            Wavelength 				FLOAT, 
-			AmplitudeOrHeight 		INT, 
-			MesostructureTexture 	INT, 
-            MesostructureGrains 	INT, 
-            MesostructureTexture2 	INT, 
-            Analyst 				INT, 
-            LaminaInheritance 		INT, 
-            MesoClotShape 			INT,
-            MesoClotSize 			INT, 
-			PRIMARY KEY (MesostructureID),
-			FOREIGN KEY (MacrostructureID) REFERENCES Macrostructures(MacrostructureID)
+            MesostructureID         INT NOT NULL AUTO_INCREMENT, 
+            SampleID                varchar(20), 
+            SampleSize              varchar(20),
+            FieldDescription        varchar(50), 
+            RockDescription         varchar(2000),
+            MesostructureDesc       INT, 
+            LaminaShape             INT, 
+            LaminaThickness         FLOAT, 
+            MacrostructureID        INT, 
+            SynopticRelief          FLOAT, 
+            Wavelength              FLOAT, 
+            AmplitudeOrHeight       INT, 
+            MesostructureTexture    INT, 
+            MesostructureGrains     INT, 
+            MesostructureTexture2   INT, 
+            Analyst                 INT, 
+            LaminaInheritance       INT, 
+            MesoClotShape           INT,
+            MesoClotSize            INT, 
+            PRIMARY KEY (MesostructureID),
+            FOREIGN KEY (MacrostructureID ) REFERENCES Macrostructures( MacrostructureID )
 		);`
 	}
 
 	let thinSectionsTbl = { 
 		name: 'ThinSections', 
 		query: SQL`CREATE TABLE ThinSections(
-			TSDescID 			INT NOT NULL AUTO_INCREMENT, 
-			SampleID 			VARCHAR(20),
-			Subsample 			VARCHAR(10), 
-            MesostructureID 	INT NOT NULL, 
-			TSDescription 		TEXT, 
-			PrimaryTexture 		INT, 
-            SecondaryTexture 	INT, 
-            Cement1 			INT, 
-            Porosity1 			INT, 
-			Cement2 			INT, 
-            Porosity2			INT, 
-            PorosityPercentEst 	INT, 
-            CementFill 			BOOLEAN, 
-            Mineralogy1 		INT,
-            Mineralogy2 		INT,
-            ClasticGrains1 		INT,
-            ClasticGrains2 		INT,
-			PRIMARY KEY (TSDescID),
-			FOREIGN KEY (Mesostructure) REFERENCES Mesostructures(MesostructureID)
+            TSDescID            INT NOT NULL AUTO_INCREMENT, 
+            SampleID            VARCHAR(20),
+            Subsample           VARCHAR(10), 
+            MesostructureID     INT NOT NULL, 
+            TSDescription       TEXT, 
+            PrimaryTexture      INT, 
+            SecondaryTexture    INT, 
+            Cement1             INT, 
+            Porosity1           INT, 
+            Cement2             INT,
+            Porosity2           INT, 
+            PorosityPercentEst  INT, 
+            CementFill          BOOLEAN, 
+            Mineralogy1         INT,
+            Mineralogy2         INT,
+            ClasticGrains1      INT,
+            ClasticGrains2      INT,
+            PRIMARY KEY (TSDescID),
+            FOREIGN KEY (MesostructureID) REFERENCES Mesostructures(MesostructureID)
         ); `
 	}
 
 	// TODO: Relative file paths.  
-	let photoLinksDataTbl = {
+	let photoLinksTbl = {
 		name: 'PhotoLinks', 
-		query: SQL`CREATE TABLE photoLinks(
-			PhotoID 		INT NOT NULL AUTO_INCREMENT, 
-            OutcropPhoto 	BOOLEAN, 
+		query: SQL`CREATE TABLE PhotoLinks(
+            PhotoID         INT NOT NULL AUTO_INCREMENT, 
+            OutcropPhoto    BOOLEAN, 
             Photomicrograph BOOLEAN, 
-			CLImage 		BOOLEAN, 
-            OtherImage 		BOOLEAN, 
-			TSOverview 		BOOLEAN, 
-            OtherDocument 	BOOLEAN, 
-			WaypointID 		INT, 
-			MacrostructureID INT, 
-            MesostructureID INT,
-            TSDescID 		INT, 
-            PhotoLinkRelative TEXT, 
-
-			PRIMARY KEY (PhotoIDKey), 
-			FOREIGN KEY (MacrostructureID) REFERENCES Macrostructures(MacrostructureID),
-			FOREIGN KEY (TSDescID) REFERENCES ThinSections(TSDescID),
-			FOREIGN KEY (WaypointID) REFERENCES Waypoints(waypointID),
-			FOREIGN KEY (MesostructureID) REFERENCES Mesostructures(MesostructureID)
+            CLImage         BOOLEAN, 
+            OtherImage      BOOLEAN, 
+            TSOverview      BOOLEAN, 
+            OtherDocument   BOOLEAN, 
+            WaypointID          INT, 
+            MacrostructureID    INT, 
+            MesostructureID     INT,
+            TSDescID            INT, 
+            PhotoLinkRelative   TEXT, 
+            PRIMARY KEY (PhotoID), 
+            FOREIGN KEY (MacrostructureID) REFERENCES Macrostructures(MacrostructureID),
+            FOREIGN KEY (MesostructureID) REFERENCES Mesostructures(MesostructureID),
+            FOREIGN KEY (TSDescID) REFERENCES ThinSections(TSDescID),
+            FOREIGN KEY (WaypointID) REFERENCES Waypoints(waypointID)
 		);` 
 	}
 
@@ -213,15 +211,15 @@ function createTables( mysql_conn )
 	// no relation
 	let microbilitesTbl = {
 		name: 'Microbialites', 
-		query: SQL`CREATE TABLE microbialites( 
-			Northing 			FLOAT, 
-			Easting 			FLOAT, 
-			SampleID 			varchar(20) NOT NULL, 
-			MacrostructureType 	INT, 
-            MesostructureDesc 	INT, 
-            LaminaShape			INT, 
-            LaminaInheritance 	INT,
-			PRIMARY KEY( SampleID )
+		query: SQL`CREATE TABLE Microbialites( 
+            Northing            FLOAT, 
+            Easting             FLOAT, 
+            SampleID            varchar(20) NOT NULL, 
+            MacrostructureType  INT, 
+            MesostructureDesc   INT, 
+            LaminaShape         INT, 
+            LaminaInheritance   INT,
+            PRIMARY KEY( SampleID )
 		);` 
 	}
 
@@ -230,16 +228,16 @@ function createTables( mysql_conn )
 	let samplesForARCTbl = { 
 		name: 'SamplesForARC',
 		query: SQL`CREATE TABLE SamplesForARC(
-			SampleID 			VARCHAR(20) NOT NULL, 
-            Datum 				VARCHAR(20), 
-			UTMZone1 			INT, 
-            UTMZone2 			CHAR(1), 
-			Easting 			FLOAT, 
-            Northing 			FLOAT, 
-			DateCollected 		DATETIME,
-			MacrostructureType 	INT, 
-            MacrostructureDesc 	INT,
-			PRIMARY KEY (SampleID), 
+			SampleID            VARCHAR(20) NOT NULL, 
+            Datum               VARCHAR(20), 
+            UTMZone1            INT, 
+            UTMZone2            CHAR(1), 
+            Easting             FLOAT, 
+            Northing            FLOAT, 
+            DateCollected       DATETIME,
+            MacrostructureType  INT, 
+            MacrostructureDesc  INT,
+            PRIMARY KEY (SampleID) 
 		); ` 
 	}
 
@@ -248,16 +246,16 @@ function createTables( mysql_conn )
 	let thrombolitesOnlyTbl = {
 		name: 'ThrombolitesOnly', 
 		query: SQL`CREATE TABLE ThrombolitesOnly(
-			Northing 	FLOAT, 
-            Easting 	FLOAT, 
-			SampleID 	VARCHAR(20), 
-			MesostructureDesc INT,
-			PRIMARY KEY (SampleID)
+            Northing    FLOAT, 
+            Easting     FLOAT, 
+            SampleID    VARCHAR(20), 
+            MesostructureDesc INT,
+            PRIMARY KEY (SampleID)
 		); `
 	}
 
 	var tables = [waypointsTbl, macrostructuresTbl, mesostructuresTbl,
-		 thinSectionsTbl, photoLinksDataTbl, microbilitesTbl,
+		 thinSectionsTbl, photoLinksTbl, microbilitesTbl,
 		 samplesForARCTbl, thrombolitesOnlyTbl];
 
 
@@ -300,7 +298,7 @@ function restoreFromCSV( mysql_conn )
 			for( let i = 0; i < tableNames.length; i++) 
 			{
 				let tableName = tableNames[i].TABLE_NAME;
-				let queryString = "TRUNCATE TABLE " + tableName + ";";
+				let queryString = "DELETE FROM " + tableName + ";";
 
 				let deleteQueryPromise = sendQuery(mysql_conn, queryString); 
 				deleteQueryPromise.then( restoreData(tableName), queryPromiseReject ); 
@@ -310,7 +308,7 @@ function restoreFromCSV( mysql_conn )
 
 	function restoreData(tableName)
 	{
-		let queryString = "LOAD DATA LOCAL INFILE './../csv/" + tableName + ".txt' INTO TABLE " + tableName + " FIELDS TERMINATED BY ','; " ;
+		let queryString = "LOAD DATA LOCAL INFILE './../csv/" + tableName + ".txt' INTO TABLE " + tableName + " FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n'; " ;
 		sendQuery(mysql_conn, queryString); 
 	}
 
