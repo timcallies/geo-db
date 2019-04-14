@@ -1,7 +1,8 @@
 # Ignore locally installed node modules. 
 */node_modules/*
 
-
+# Ignore swap files
+*.swap
 
 # Compiled class file
 *.class
