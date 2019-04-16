@@ -1,0 +1,325 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+:root {
+    --bg-dark:#E0934C;
+    --bg-light:#F7D08A;
+    --bg-page:#FFF5E9;
+    --bg-content:#FFFFFF;
+    --flair-light: #87D3CC;
+    --flair-dark: #14636B;
+    --text:  #5e5e5e;
+    --bg-extra-light: #FCEDD4;
+}
+
+body{
+    background-color: var(--bg-page);
+    color: var(--text);
+    margin: 0px;
+    font-family: 'Nunito', sans-serif;
+    min-width: 15rem;
+}
+
+header{
+    background-color: var(--bg-dark);
+    padding: 1em;
+    font-weight: bold;
+    color: var(--bg-page);
+    font-size: larger;
+}
+
+.pageWidth{
+    max-width: 80rem;
+    margin: auto;
+}
+
+.contentBox{
+    background-color: var(--bg-content);
+    margin: 1em;
+}
+
+.flexContainer{
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.flexLeft{
+    width: 15rem;
+    flex-grow: 4;
+}
+
+.flexRight{
+    width: 15rem;
+    flex-grow: 1;
+}
+
+.pathButtons{
+    padding: 1rem;
+    padding-bottom: 0rem;
+}
+
+.pathButton{
+    font-weight: bold;
+    color:var(--flair-dark);
+    padding: 0.5rem;
+    background-color: var(--bg-light);
+}
+.pathButton:hover{
+    color:var(--bg-page);
+    background-color: var(--bg-dark);
+    cursor: pointer;
+}
+.pathButtonCurrent{
+    font-weight: bold;
+    color:var(--bg-page);
+    padding: 0.5rem;
+    background-color: var(--bg-dark);
+}
+
+
+
+.contentHeader{
+    color: var(--flair-dark);
+    background-color: var(--bg-light);
+    border-bottom: var(--bg-dark) solid 1px;
+    padding-left: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-right: 1em;
+    font-weight: bold;
+    font-size: large
+}
+
+.contentBody{
+    padding: 1em;
+}
+
+.imageBox{
+    text-align: center;
+}
+
+.imageBoxImage{
+    width: 100%;
+}
+
+.footer{
+    font-size: small;
+    background-color: var(--bg-content);
+    text-align: center;
+    padding: 0.5em;
+}
+
+.gallery{
+    width: 15rem;
+    margin:auto;
+}
+
+.galleryFlex{
+    display: flex;
+    background-image: url(https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-s%2F06%2F7f%2Fd6%2Fda%2Frockhound-state-park.jpg&f=1);
+    height: 15rem;
+    background-size: cover;
+    background-position: center;
+}
+
+
+
+.galleryButton{
+    opacity: 0;
+    background-color: var(--text);
+    height: 15rem;
+    text-align: center;
+    line-height: 15rem;
+    color: white;
+    cursor: pointer;
+}
+
+.galleryButton:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.galleryCenter{
+    flex-grow: 2;
+}
+
+.galleryEdge{
+    flex-grow: 1;
+}
+
+.childList{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.childNode{
+    background-color: var(--bg-page);
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor:pointer;
+    overflow-x: hidden;
+}
+
+.centeredFlex{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.uploadButton{
+    height: 3rem;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.uploadButton:hover{
+    background-color: #EEEEEE;
+    cursor: pointer;
+}
+
+.childNode:nth-child(odd){
+    background-color: var(--bg-extra-light);
+}
+
+.childNodeImage{
+    margin: 0.5rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 2rem;
+}
+
+.childNodeText{
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    margin: 0px;
+}
+
+.childNodeType{
+    font-weight: bold;
+    margin: 0.2rem;
+    margin-right: 1rem;
+}
+
+.galleryWindowContainer{
+    position: relative;
+    width:100%;
+    display: none;
+
+}
+
+.galleryWindow{
+    border-inline: #DDDDDD solid 2px;
+    position: absolute;
+    width:inherit;
+    background-color: var(--bg-content);
+    border-bottom: #DDDDDD solid 2px;
+    margin-top: 0.5rem;
+}
+
+.imageGalleryContainer
+{
+    display: flex;
+    justify-content: center;
+}
+
+
+#closeGallery{
+    margin-left: auto;
+    cursor: pointer;
+}
+
+.galleryImageFlex{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 1rem;
+}
+
+.galleryImageFlexImage{
+    margin: 0.2rem;
+    height: 4rem;
+    width: 4rem;
+    border: 1px black solid;
+    cursor: pointer;
+
+}
+
+.galleryImageFlexImageSelected{
+    border: 2px red solid;
+}
+
+select{
+    -webkit-appearance: none;
+    outline: none;
+    border: none;
+    width: 100%;
+    font-family: 'Nunito', sans-serif;
+    font-size: medium;
+    color: var(--text);
+    border-bottom: inset 2px #EEEEEE;
+    box-sizing: border-box;
+}
+
+.galleryImage{
+    width: 90%;
+    height: 90%;
+    margin: 1rem;
+}
+
+.childNodeLink{
+    margin: 0.2rem;
+}
+
+.textSectionHeader{
+    font-size: large;
+    font-weight: bold;
+    padding: 0.2em;
+    border-bottom: var(--text) solid 1px;
+    margin-bottom: 0.5em;
+}
+
+.textDescription{
+    margin-bottom: 1.5em;
+}
+
+.propertyGroup{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 1.5em;
+}
+
+.property{
+    display: flex;
+    flex-grow: 1;
+    width: 50%;
+    min-width: 16em;
+}
+.propertyName{
+    min-width: 8rem;
+    padding: 0.5em;
+    font-weight: bold;
+    text-align: right;
+    background-color: #EEEEEE;
+    font-size: small;
+}
+.propertyContent{
+    padding: 0.5em;
+    min-width: 8em;
+}
+
+.actionButton{
+    font-size: 1.0rem;
+    padding: 0.5rem;
+    border-bottom: #DDDDDD solid 1px;
+    cursor:pointer;
+}
+
+.actionButton:hover{
+    cursor:pointer;
+    background-color: #EEEEEE;
+}
