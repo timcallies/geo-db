@@ -1,6 +1,0 @@
-1,"Isopachous",,1
-2,"Dog-tooth spar",,2
-3,"Herringbone",,3
-4,"Calcite spar",,4
-5,"Other",,6
-6,"Radial fibrous",,5

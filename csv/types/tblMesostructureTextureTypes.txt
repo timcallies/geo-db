@@ -1,8 +1,0 @@
-1,"Laminated, isopachous",1
-2,"Laminated, wavy",2
-3,"Laminated, draping",3
-4,"Thrombolitic",4
-5,"Brecciated",6
-6,"Oncolitic",7
-7,"Massive",5
-8,"Other",8

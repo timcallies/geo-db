@@ -1,8 +1,0 @@
-1,"Fenestral",
-2,"Moldic",
-3,"Microporous",
-4,"Macroporous",
-5,"Shelter",
-6,"Dissolutional",
-7,"Karstic",
-8,"Other",
