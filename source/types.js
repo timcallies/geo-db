@@ -1,37 +1,111 @@
 const Enum = require('node-enumjs'); 
 
-//modules.exports = {  };
-
-
-var EntryType = Enum.define( "Entry", ["WAYPOINT", "MACROSTRUCTURE", "MESOSTRUCTURE", "THINSECTION"] );
+const StructureType = Enum.define( "Structure", ["WAYPOINT", "MACRO", "MESO", "THINSECTION"] );
 
 
 //TODO: generate this enum from the file types/MacroStructureType.txt
-var MacrostructureType = Enum.define( "Macrostructure", 
+const MacrostructureType = Enum.define( "Macrostructure", 
     ["SMALL_DOMAL", "LARGE_DOMAL", "DENDROLITITC", "STRATIFORM", "CYLINDRICAL", 
         "CONICAL", "OTHER", "ROUNDED_DEPRESSION", "COMPOSITE", "TEEPEE", "CONICALVOID", 
         "MEDIUM_DOMAL", "HEMISPHEREICAL", "TURBINATE",  "UNDULATORY" ] ); 
 
 
 
+// Structure is an immutable object with a variable number
+// of possible properties, not all properties are gareenteed 
+// to be there. Best practice would be to check that the 
+// property is there before you access that property. 
+//
+//
+// or I am really hoping that it is immutable.
+function Structure( properties )
+{
+    this.parentID; 
+    this.parentType;
+    this.structureType; 
+    for( var[key, value] of properties)
+    {
+        this[key] = value;
+    }
+}
 
-var toPug = function() { return 0; }
-var toSQL = function() { return 0; }
-var getParents = function(){ return 0; }
-var getChildern = function(){ return 0; } 
-var updateProperties = function(){ return 0; }
-var getPhotos = function(){ return 0; }
-// var addChild = function(){ return 0; } 
-// deleteEntry = function(){ return 0; } 
+
+
+function Waypoint( properties )
+{
+    Structure.call(this, properties); 
+    this.structureType = StructureType.WAYPOINT;
+
+
+    Object.freeze(this); 
+}
+Waypoint.prototype = Object.create( Structure.prototype ); 
+
+
+
+
+function Macrostructure( properties )
+{
+    Structure.call(this, StructureType.MACRO, properties); 
+    this.structureType = StructureType.MACRO; 
+   
+
+    if( 'waypointID' in this ) //wtf js
+    {
+        this.parentID = this.waypointID; 
+        this.parentType = StructureType.WAYPOINT; 
+    }
+
+    Object.freeze(this); 
+}
+Macrostructure.prototype = Object.create( Structure.prototype ); 
+
+
+
+
+
+function Mesostructure( properties ) 
+{
+    Structure.call(this,  properties); 
+    this.structureType = StructureType.MESO; 
+
+    if( 'macrostructureID' in this)
+    {
+        this.parentID = this.macrostructureID; 
+        this.parentType = StructureType.MACRO; 
+    }
+    
+    Object.freeze(this);
+}
+Mesostructure.prototype = Object.create( Structure.prototype ); 
+
+
+
+
+
+function ThinSection( properties )
+{
+    Structure.call(this, properties); 
+    this.structureType = StructureType.THINSECTION; 
+
+    if( 'MesostructureID' in this ) 
+    {
+        this.parentID = this.mesostructureID; 
+        this.parentType = StructureType.MESO;
+    }
+
+    Object.freeze(this);
+}
+ThinSection.prototype = Object.create( Structure.prototype ); 
 
 
 
 
 // properties is a map of possible key value pairs.  
-function entryFactory( entryType, properties )
+function structureFactory( structureType, properties )
 { 
    
-    switch( entryType.ordinal() )
+    switch( structureType.ordinal() )
     {
         //Waypoint
         case 0: 
@@ -62,69 +136,48 @@ function entryFactory( entryType, properties )
 }
 
 
-// if js does lazy eval then this will load all the methods in 
-// on creation of the object. 
-function Entry( )
+
+
+// I am going to opt to use the functional 
+// route for defining these functions, such that the object 
+// is not changed when these methods are called on them. 
+//
+function toPug( Structure ) { return 0; }
+function toSQL( Structure ) { return 0; }
+
+function getParents( Structure )
 {
-    this.toPug = toPug; 
-    this.toSQL = toSQL; 
-    this.getParents = getParents; 
-    this.updateProperties = updateProperties; 
-    this.getPhotos = getPhotos; 
+    return 0; 
 }
 
+function getChildern( Structure )
+{ 
+    return 0; 
+} 
 
-function Waypoint( properties )
-{
-    Entry.call(this); 
-
-    for( var[key, value] of properties)
-    {
-        this[key] = value;
-    }
-
+function updateProperties(Structure, newProperties )
+{ 
+    return 0; 
 }
 
-
-function Macrostructure( properties )
-{
-    Entry.call(this); 
-
-    for( var[key, value] of properties )
-    {
-        this[key] = value;
-    }
-
+function getPhotos( Structure )
+{ 
+    return 0; 
 }
+// var addChild = function(){ return 0; } 
+// deleteEntry = function(){ return 0; } 
 
 
-function Mesostructure( properties ) 
-{
-    Entry.call(this); 
 
-    for( var[key, value] of properties)
-    {
-        this[key] = value;
-    }
 
-}
-
-function ThinSection( properties )
-{
-    Entry.call(this); 
-    for( var[key, value] of properties)
-    {
-        this[key] = value;
-    }
-
-    ThinSection.prototype = Object.create(Entry.prototype); 
-}
 
 
 // short test.
 var myMap = new Map( [ ["waypointID", 1], ["latitude", 1234.1234], ["longitude", 1234.1234] ]); 
-var myWaypoint = entryFactory( EntryType.WAYPOINT,  myMap); 
+var myWaypoint = structureFactory( StructureType.WAYPOINT,  myMap); 
 console.log( myWaypoint instanceof Waypoint); 
-console.log( myWaypoint instanceof Entry );
+console.log( myWaypoint instanceof Structure );
+console.log( Object.entries( myWaypoint ) ); 
 
-
+//Module Export 
+module.exports = { StructureType, Structure, MacrostructureType, StructureType  };
