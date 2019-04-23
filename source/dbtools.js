@@ -26,6 +26,8 @@ module.exports = { sendQuery, restoreFromCSV, createTables }
 // for sending queries to the geodb using the 'me'
 // user.  This function does not sanatize sql input.  
 //
+// Returns a promise that is wrapped around the exectuion of the query. 
+//
 function sendQuery( mysql_conn, queryString ) {
 	
 	if( mysql_conn == null)
@@ -69,6 +71,7 @@ function queryPromiseReject( err )
 //	the csv. 
 //
 // TODO: Enum data types
+// TODO: change to one table at a time. 
 function createTables( mysql_conn, tables )
 {
     //Tables should be an object that has a name property describing the
@@ -172,7 +175,7 @@ function createDataTables( mysql_conn )
 	let thinSectionsTbl = { 
 		name: 'ThinSections', 
 		query: SQL`CREATE TABLE ThinSections(
-            thinSectionID                INT NOT NULL AUTO_INCREMENT, 
+            thinSectionID       INT NOT NULL AUTO_INCREMENT, 
             sampleName          VARCHAR(20) NOT NULL,
             subsample           VARCHAR(10), 
             mesostructureID     INT NOT NULL, 
@@ -287,6 +290,7 @@ function createDataTables( mysql_conn )
  *
  * Note that this function will only work if there are actually 
  * tables in the database. 
+ * TODO: use SQL template strings. 
  * 
  */
 function restoreFromCSV( mysql_conn )
