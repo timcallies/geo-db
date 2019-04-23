@@ -131,6 +131,10 @@ header{
     line-height: 15rem;
     color: white;
     cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .galleryButton:hover{
@@ -222,7 +226,6 @@ header{
 
 .imageGalleryContainer
 {
-    display: flex;
     justify-content: center;
 }
 
@@ -243,8 +246,10 @@ header{
     margin: 0.2rem;
     height: 4rem;
     width: 4rem;
+    object-fit: cover;
     border: 1px black solid;
     cursor: pointer;
+    box-sizing: border-box;
 
 }
 
@@ -264,9 +269,22 @@ select{
     box-sizing: border-box;
 }
 
+input{
+    -webkit-appearance: none;
+    outline: none;
+    border: none;
+    width: 100%;
+    font-family: 'Nunito', sans-serif;
+    font-size: medium;
+    color: var(--text);
+    border-bottom: inset 2px #EEEEEE;
+    box-sizing: border-box;
+    padding: 0.5rem;
+}
+
 .galleryImage{
     width: 90%;
-    height: 90%;
+    height: auto;
     margin: 1rem;
 }
 

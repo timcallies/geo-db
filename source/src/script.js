@@ -1,4 +1,5 @@
 $('#openGallery').click(function(){
+    $(window).scrollTop(0);
     $('.galleryWindowContainer').fadeIn();
     $('.galleryFlex').css("pointer-events","none");
 });
@@ -26,6 +27,16 @@ $('.galleryImageFlexImage').click(function(){
     selectImage($(this)[0].id);
 });
 
+$('#editButton').click(function() {
+    $('.property').each(function() {
+        let thisItem={
+        name: ($(this).children('.propertyName').text()),
+        value: ($(this).children('.propertyContent').val())
+        }
+        console.log(thisItem);
+    });
+});
+
 var selectedImage=0;
 selectImage(0);
 
@@ -41,5 +52,6 @@ function selectImage(num){
     selectedImage=num;
     let mySrc = myChildren[0].src;
     $('.galleryFlex').css('background-image','url('+mySrc+')');
-    $('.galleryImage').attr('src',mySrc);
+    var newImg = "<img class='galleryImage' src='"+mySrc+"'/>"
+    $('.galleryImage').replaceWith(newImg);
 }

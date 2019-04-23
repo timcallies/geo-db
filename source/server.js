@@ -91,22 +91,22 @@ var demoJSON = {
                   {
                       name:"Lamina Thickness",
                       value:0,
-                      values:[1,2,3,4,5,6,7,8,9,10]
+                      values:"num"
                   },
                   {
                       name:"Synoptic Relief",
                       value:0,
-                      values:[1,2,3,4,5,6,7,8,9,10]
+                      values:"num"
                   },
                   {
                       name:"Wavelength",
                       value:0,
-                      values:[1,2,3,4,5,6,7,8,9,10]
+                      values:"num"
                   },
                   {
                       name:"Amplitude",
                       value:0,
-                      values:[1,2,3,4,5,6,7,8,9,10]
+                      values:"num"
                   }
               ]
           }
