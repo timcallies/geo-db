@@ -1,0 +1,94 @@
+mixin child-node(node)
+    .childNode
+        img.childNodeImage(src=node.src)
+        .childNodeText
+            .childNodeType= node.type
+            .childNodeLink= "#"+node.id
+
+mixin property-entry(property)
+    .property
+        .propertyName.centeredFlex= property.name
+        select.propertyContent
+            each val in property.values
+                option(value=val, selected=(val==property.value))=val
+
+mixin path-button(button)
+    .pathButton= button.type + "# " + button.id
+    i.material-icons keyboard_arrow_right
+
+html
+    head 
+        title GeoDB 
+        meta(name='viewport', content='width=device-width, initial-scale=1.0"')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+    link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+    style @import url("src/css.css");
+    body
+        header GeoDB
+        .pageWidth
+            .galleryWindowContainer
+                .galleryWindow
+                    .contentHeader.centeredFlex Gallery
+                        i.material-icons#closeGallery close
+                    .flexContainer
+                        .flexLeft.imageGalleryContainer
+                            img.galleryImage
+                        .flexRight
+                            .galleryImageFlex
+                                each imageThumb, idx in entry.images
+                                    img.galleryImageFlexImage(id=idx, src=imageThumb)
+            .centeredFlex.pathButtons
+                //-Finds all of the paths leading to the current node
+                each button in entry.path
+                    +path-button(button)
+                .pathButtonCurrent= entry.type + " #" + entry.id
+            .contentBox
+                .contentHeader Information
+                .contentBody.flexContainer
+                    .flexLeft
+                        //- Load in all text descriptions of the item
+                        each description in entry.descriptions
+                            .textSectionHeader= description.type
+                            .textDescription= description.content
+                        each propertyGroup in entry.properties
+                            .textSectionHeader= propertyGroup.group
+                            .propertyGroup
+                                //- Load in all properties
+                                each property in propertyGroup.properties
+                                    +property-entry(property)
+                    .imageBox.flexRight
+                        .gallery
+                            .contentHeader Gallery
+                            .galleryFlex
+                                .galleryButton.galleryEdge#gallLeft
+                                    i.material-icons keyboard_arrow_left
+                                .galleryButton.galleryCenter#openGallery
+                                    i.material-icons zoom_in
+                                .galleryButton.galleryEdge#gallRight
+                                    i.material-icons keyboard_arrow_right
+                            .uploadButton.centeredFlex
+                                i.material-icons attach_file
+                                p Upload an Image
+            .flexContainer
+                .contentBox.flexLeft
+                    .contentHeader Children
+                    .contentBody
+                        //-Loads in all of the children
+                        .childList
+                            each node in entry.children
+                                +child-node(node)
+                .contentBox.flexRight
+                    .contentHeader Actions
+                    .contentBody
+                        .childList
+                            .actionButton.centeredFlex
+                                i.material-icons favorite
+                                p - Add to Favorites
+                            .actionButton.centeredFlex
+                                i.material-icons edit
+                                p - Edit
+                            .actionButton.centeredFlex
+                                i.material-icons delete
+                                p - Delete
+            .contentBox.footer UST CS Club 2019
+    script(src='src/script.js')
