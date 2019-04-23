@@ -1,4 +1,5 @@
-const dbtools = require('./dbtools.js') ;
+const Dbtools = require('./dbtools.js') ;
+const Types = require('./types.js'); 
 
 const express = require('express');
 const app = express();
@@ -23,8 +24,20 @@ mysql_conn.connect( function(err) {
 
 
 
-//dbtools.createTables(mysql_conn); 
-//dbtools.restoreFromCSV(mysql_conn); 
+//Dbtools.createTables(mysql_conn); 
+//Dbtools.restoreFromCSV(mysql_conn); 
+
+
+var macroTestMap = new Map( [ ["MacroStructureID", 1], 
+    ["MacrostructureType", Types.MacrostructureType.SMALL_DOMAL], 
+    ["WaypointID", 10] ] ); 
+
+var myMacrostructure = Types.structureFactory( Types.StructureType.MACROSTRUCTURE, macroTestMap ); 
+console.log( myMacrostructure ); 
+Types.getParents( myMacrostructure, mysql_conn ); 
+
+
+
 
 app.listen(3000);
 
