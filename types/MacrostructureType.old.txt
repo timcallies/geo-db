@@ -1,0 +1,16 @@
+small domal(<15cmdiam)   
+largedomal(>50cmdiam) 
+dendrolitic
+stratiform 
+cylindrical 
+conical 
+other  
+roundeddepression  
+composite 
+teepee(notmicrobial) 
+conicalvoid         
+mediumdomal(15-50cmdiam)
+hemispherical(<15cmdiam)
+turbinate 
+hemispherical(>15-50cmdiam)  
+undulatory
